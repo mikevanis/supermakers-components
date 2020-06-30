@@ -2,8 +2,6 @@
 Generic button
 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
 import Button from '@material-ui/core/button';
 import { withStyles } from '@material-ui/core/styles';
 
