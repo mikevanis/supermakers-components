@@ -1,6 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Supermakers Components 🛠🎨️🙃
 
-## Available Scripts
+A collection of components for the Supermakers app
+
+## Available Scripts from Create React App
 
 In the project directory, you can run:
 
