@@ -11,10 +11,10 @@ const useStyles = makeStyles({
    marginBottom: 30,
    color: '#182a74',
  },
- body: {
+ content: {
    color: '#182a74',
    fontSize: 26,
- },
+ }
 });
 
 export default function SmReadPanel(props) {
@@ -31,13 +31,9 @@ export default function SmReadPanel(props) {
       >
         {props.index}
       </Typography>
-      <Typography
-        variant="body1"
-        color="read"
-        className={classes.body}
-      >
+      <div className={classes.content}>
         {props.children}
-      </Typography>
+      </div>
     </Box>
   )
 }

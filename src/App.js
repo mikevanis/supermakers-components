@@ -4,6 +4,7 @@ import SmButton from './ui/SmButton';
 import SmAppBar from './ui/SmAppBar';
 import SmModeSelector from './ui/SmModeSelector';
 import SmReadPanel from './ui/SmReadPanel';
+import SmStartSlider from './ui/SmStartSlider';
 import './App.css';
 
 function App() {
@@ -21,6 +22,12 @@ function App() {
         >
           Button
         </SmButton>
+        <br/>
+        <br/>
+        <br/>
+        <SmStartSlider onSwiped={() => {console.log("Swiped!!");}}>
+          Let's go!
+        </SmStartSlider>
       </SmReadPanel>
     </RootContainer>
   );
