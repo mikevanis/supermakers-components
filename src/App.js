@@ -5,6 +5,7 @@ import SmAppBar from './ui/SmAppBar';
 import SmModeSelector from './ui/SmModeSelector';
 import SmReadPanel from './ui/SmReadPanel';
 import SmStartSlider from './ui/SmStartSlider';
+import SmProgressBar from './ui/SmProgressBar';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <RootContainer>
       <SmAppBar onMenuClick={() => {console.log("Menu");}}/>
       <SmModeSelector/>
+      <SmProgressBar progress={"30%"}/>
       <SmReadPanel index={1}>
         Hello there. This is an example of text.
         <br/>
