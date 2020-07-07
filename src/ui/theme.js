@@ -18,13 +18,24 @@ const apercu = {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#ff6d00',
+      main: '#ff6d00', // Orange
+      contrastText: '#fff'
     },
     secondary: {
-      main: '#182a74',
+      main: '#182a74', // Blue
+      contrastText: '#fff'
     },
     info: {
-      main: '#ffdc20',
+      main: '#ffafa6', // Pink
+      contrastText: '#182a74'
+    },
+    warning: {
+      main: '#ffdc20', // Yellow
+      contrastText: '#182a74'
+    },
+    success: {
+      main: '#04b78a', // Yellow
+      contrastText: '#fff'
     },
   },
   typography: {
