@@ -12,6 +12,9 @@ const eyeStyles = makeStyles({
     borderRadius: 0,
     width: '50%',
     height: 65,
+    '&:hover': {
+      background: '#ffafa6',
+    },
   },
 });
 
@@ -21,6 +24,9 @@ const handStyles = makeStyles({
     borderRadius: 0,
     width: '50%',
     height: 65,
+    '&:hover': {
+      background: '#ffdc20',
+    },
   },
 })
 

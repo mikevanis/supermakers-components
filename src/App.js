@@ -13,28 +13,25 @@ function App() {
     <RootContainer>
       <SmAppBar onMenuClick={() => {console.log("Menu");}}/>
       <SmModeSelector/>
-      <SmProgressBar progress={"80%"}/>
+      <SmProgressBar progress={"30%"}/>
       <SmReadPanel index={1}>
         Hello there. This is an example of text.
         <br/>
         <br/>
         <SmButton
-          color='primary'
-          variant='contained'
+          color='orange'
         >
           Primary
         </SmButton>
         <SmButton
-          color='secondary'
-          variant='outlined'
+          color='blue'
         >
-          Secondary
+          Blue
         </SmButton>
         <SmButton
-          color='info'
-          variant='outlined'
+          color='white'
         >
-          Secondary
+          White
         </SmButton>
         <br/>
         <br/>

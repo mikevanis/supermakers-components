@@ -16,26 +16,23 @@ export default function SmAppBar(props) {
   const classes = useStyles();
 
   return(
-    <div className={classes.root}>
-      <AppBar
-        position="static"
-        className={classes.appBar}
-        color="secondary"
-      >
-        <Toolbar>
-          <Typography variant="h5" className={classes.title}>
-            Super Makers
-          </Typography>
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="menu"
-            onClick={props.onMenuClick}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar
+      position="static"
+      color="secondary"
+    >
+      <Toolbar>
+        <Typography variant="h5" className={classes.title}>
+          Super Makers
+        </Typography>
+        <IconButton
+          edge="end"
+          color="inherit"
+          aria-label="menu"
+          onClick={props.onMenuClick}
+        >
+          <MenuIcon />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };

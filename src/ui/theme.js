@@ -34,7 +34,7 @@ const theme = createMuiTheme({
       contrastText: '#182a74'
     },
     success: {
-      main: '#04b78a', // Yellow
+      main: '#04b78a', // Green
       contrastText: '#fff'
     },
   },
