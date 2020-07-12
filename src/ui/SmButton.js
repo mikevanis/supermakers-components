@@ -1,5 +1,5 @@
 /*
-Generic button
+Generic button covering orange / blue / white styles.
 */
 
 import React from 'react';
@@ -53,10 +53,8 @@ const whiteStyles = makeStyles({
   }
 });
 
-export default function SmButton(props) {
+const SmButton = React.forwardRef((props, ref) => {
   let outputClass = null;
-  let buttonVariant = null;
-  let buttonColor = null;
   switch(props.color) {
     case 'orange':
       outputClass = orangeStyles();
@@ -76,8 +74,13 @@ export default function SmButton(props) {
       variant="contained"
       color="primary"
       classes={{...outputClass}}
+      className={props.className}
+      onClick={props.onClick}
+      ref={ref}
     >
       {props.children}
     </Button>
   );
-}
+});
+
+export default SmButton;

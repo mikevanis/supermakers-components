@@ -1,3 +1,6 @@
+/*
+Material UI theme
+*/
 import { createMuiTheme } from '@material-ui/core/styles';
 import ApercuRegularWoff2 from '../assets/fonts/ApercuRegular.woff2';
 

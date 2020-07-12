@@ -1,3 +1,7 @@
+/*
+A button group for switching between "read" and "play" mode in gameplay.
+*/
+
 import React from 'react';
 import ButtonBase from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -10,6 +14,7 @@ const eyeStyles = makeStyles({
   root: {
     backgroundColor: '#ffafa6',
     borderRadius: 0,
+    border: 'none',
     width: '50%',
     height: 65,
     '&:hover': {
@@ -22,6 +27,7 @@ const handStyles = makeStyles({
   root: {
     backgroundColor: '#ffdc20',
     borderRadius: 0,
+    border: 'none !important',
     width: '50%',
     height: 65,
     '&:hover': {
@@ -29,6 +35,14 @@ const handStyles = makeStyles({
     },
   },
 })
+
+const buttonGroupStyles = makeStyles({
+  groupedContained: {
+    '&:not(:last-child)': {
+      border: 'none',
+    },
+  },
+});
 
 const eyeImgStyle = {
   height: 18,
@@ -38,20 +52,23 @@ const handImgStyle = {
   height: 29,
 };
 
-export default function SmModeSelector() {
+export default function SmModeSelector(props) {
   const eyeClasses = eyeStyles();
   const handClasses = handStyles();
+  const buttonGroupClasses = buttonGroupStyles();
 
   return(
     <ButtonGroup
       variant='contained'
-      fullWidth={true}
+      fullWidth
+      classes={{...buttonGroupClasses}}
     >
       <ButtonBase
         classes={{
           root: eyeClasses.root,
           active: eyeClasses.active,
         }}
+        onClick={() => {props.onModeClick("read")}}
       >
         <img src={eye} style={eyeImgStyle} alt="read"/>
       </ButtonBase>
@@ -60,6 +77,7 @@ export default function SmModeSelector() {
           root: handClasses.root,
           active: handClasses.active,
         }}
+        onClick={() => {props.onModeClick("play")}}
       >
         <img src={hand} style={handImgStyle} alt="play"/>
       </ButtonBase>
