@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "body-scroll-lock": "^3.0.3",
     "framer-motion": "^1.11.1",
+    "paper": "^0.12.11",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

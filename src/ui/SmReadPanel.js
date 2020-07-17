@@ -23,7 +23,7 @@ export default function SmReadPanel(props) {
     <Box
       bgcolor="#ffafa6"
       className={classes.root}
-      height="100%"
+      flexGrow={1}
     >
       <Typography
         variant="h3"

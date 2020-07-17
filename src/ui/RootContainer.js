@@ -1,6 +1,7 @@
 import React from 'react';
 import { disableBodyScroll } from 'body-scroll-lock';
 import { ThemeProvider } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import theme from './theme';
 
 class RootContainer extends React.Component {
@@ -14,7 +15,9 @@ class RootContainer extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        {this.props.children}
+        <Box height="100%" display="flex" flexDirection="column">
+          {this.props.children}
+        </Box>
       </ThemeProvider>
     );
   }
