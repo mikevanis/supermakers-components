@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="102" height="211.746" viewBox="0 0 102 211.746">
+  <g id="Group_758" data-name="Group 758" transform="translate(-553.662 -292.99)">
+    <g id="Group_737" data-name="Group 737" transform="translate(575.016 292.99)">
+      <g id="Group_460" data-name="Group 460" transform="translate(7.367 92.735)">
+        <path id="Path_182" data-name="Path 182" d="M-1743.672,1329.886v92.735a11.532,11.532,0,0,1-11.532,11.531h0" transform="translate(1755.204 -1329.886)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_183" data-name="Path 183" d="M-1688.742,1329.886v58.322a11.532,11.532,0,0,0,11.532,11.532h0" transform="translate(1721.416 -1329.886)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+      <g id="Group_461" data-name="Group 461" transform="translate(0 0)">
+        <path id="Rectangle_113" data-name="Rectangle 113" d="M29.47,0h0a29.47,29.47,0,0,1,29.47,29.47V92.735a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V29.47A29.47,29.47,0,0,1,29.47,0Z" fill="#ff6d00"/>
+        <rect id="Rectangle_114" data-name="Rectangle 114" width="58.941" height="20.954" transform="translate(0 92.735)" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Group_750" data-name="Group 750" transform="translate(-14 -14)">
+      <g id="Group_748" data-name="Group 748" transform="translate(105.277 -232.723)">
+        <g id="Group_653" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73" data-name="Ellipse 73" cx="15" cy="15" r="15" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_749" data-name="Group 749" transform="translate(114.648 -223.352)">
+        <g id="Group_653-2" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73-2" data-name="Ellipse 73" cx="5.629" cy="5.629" r="5.629" fill="#182a74"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_751" data-name="Group 751" transform="translate(-86 19)">
+      <g id="Group_748-2" data-name="Group 748" transform="translate(105.277 -232.723)">
+        <g id="Group_653-3" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73-3" data-name="Ellipse 73" cx="15" cy="15" r="15" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_749-2" data-name="Group 749" transform="translate(114.648 -223.352)">
+        <g id="Group_653-4" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73-4" data-name="Ellipse 73" cx="5.629" cy="5.629" r="5.629" fill="#182a74"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

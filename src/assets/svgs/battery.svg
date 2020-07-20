@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="362" height="88.074" viewBox="0 0 362 88.074">
+  <g id="Group_756" data-name="Group 756" transform="translate(-87 -497.999)">
+    <g id="Group_738" data-name="Group 738" transform="translate(1912.939 -1355.266)">
+      <circle id="Ellipse_48" data-name="Ellipse 48" cx="44.037" cy="44.037" r="44.037" transform="translate(-1784.94 1853.265)" fill="#fff"/>
+      <path id="Rectangle_126" data-name="Rectangle 126" d="M44,0H236.189a0,0,0,0,1,0,0V88.074a0,0,0,0,1,0,0H44a44,44,0,0,1-44-44V44A44,44,0,0,1,44,0Z" transform="translate(-1506.089 1941.338) rotate(-180)"/>
+      <circle id="Ellipse_49" data-name="Ellipse 49" cx="44.037" cy="44.037" r="44.037" transform="translate(-1592.779 1853.265)" fill="#fff"/>
+      <circle id="Ellipse_50" data-name="Ellipse 50" cx="26.318" cy="26.318" r="26.318" transform="translate(-1575.059 1871.284)"/>
+      <g id="Group_465" data-name="Group 465" transform="translate(-1709.641 1882.335)">
+        <rect id="Rectangle_127" data-name="Rectangle 127" width="11.577" height="30.532" transform="translate(19.901)" fill="#ffafa6"/>
+        <rect id="Rectangle_128" data-name="Rectangle 128" width="11.577" height="30.532" transform="translate(0)" fill="#ffafa6"/>
+        <rect id="Rectangle_129" data-name="Rectangle 129" width="11.577" height="30.532" transform="translate(39.802)" fill="#ffafa6"/>
+        <rect id="Rectangle_130" data-name="Rectangle 130" width="11.577" height="30.532" transform="translate(59.703)" fill="#ffafa6"/>
+        <rect id="Rectangle_131" data-name="Rectangle 131" width="11.577" height="30.532" transform="translate(79.604)" fill="#ffafa6"/>
+      </g>
+      <g id="Group_466" data-name="Group 466" transform="translate(-1772.369 1887.117)">
+        <rect id="Rectangle_138" data-name="Rectangle 138" width="4.812" height="20.902" transform="translate(0 12.857) rotate(-90)"/>
+        <rect id="Rectangle_133" data-name="Rectangle 133" width="3.392" height="20.902" transform="translate(234.041 8.755) rotate(90)" fill="#fff"/>
+        <rect id="Rectangle_139" data-name="Rectangle 139" width="4.812" height="20.902" transform="translate(8.045 0)"/>
+      </g>
+    </g>
+    <g id="Group_752" data-name="Group 752" transform="translate(-552.662 71.262)">
+      <g id="Group_748" data-name="Group 748" transform="translate(105.277 -232.723)">
+        <g id="Group_653" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73" data-name="Ellipse 73" cx="15" cy="15" r="15" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_749" data-name="Group 749" transform="translate(114.648 -223.352)">
+        <g id="Group_653-2" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73-2" data-name="Ellipse 73" cx="5.629" cy="5.629" r="5.629" fill="#182a74"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_753" data-name="Group 753" transform="translate(-220.662 71.262)">
+      <g id="Group_748-2" data-name="Group 748" transform="translate(105.277 -232.723)">
+        <g id="Group_653-3" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73-3" data-name="Ellipse 73" cx="15" cy="15" r="15" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_749-2" data-name="Group 749" transform="translate(114.648 -223.352)">
+        <g id="Group_653-4" data-name="Group 653" transform="translate(534.385 688.459)">
+          <circle id="Ellipse_73-4" data-name="Ellipse 73" cx="5.629" cy="5.629" r="5.629" fill="#182a74"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg id="button" xmlns="http://www.w3.org/2000/svg" width="140.935" height="202" viewBox="0 0 140.935 202">
+  <g id="Group_739" data-name="Group 739" transform="translate(-9 35.063)">
+    <g id="Group_532" data-name="Group 532" transform="translate(9 12)">
+      <circle id="Ellipse_78" data-name="Ellipse 78" cx="56.554" cy="56.554" r="56.554" transform="translate(27.827)" fill="#182a74"/>
+      <rect id="Rectangle_156" data-name="Rectangle 156" width="120.097" height="71.765" rx="35.883" transform="translate(0 20.505)" fill="#fff"/>
+      <path id="Path_299" data-name="Path 299" d="M36.05,0A36.05,36.05,0,1,1,0,36.05,36.05,36.05,0,0,1,36.05,0Z" transform="translate(0 20.505)" fill="red"/>
+    </g>
+  </g>
+  <g id="Group_755" data-name="Group 755" transform="translate(-568.846 -455.736)">
+    <g id="Group_748" data-name="Group 748" transform="translate(105.277 -232.723)">
+      <g id="Group_653" data-name="Group 653" transform="translate(534.385 688.459)">
+        <circle id="Ellipse_73" data-name="Ellipse 73" cx="15" cy="15" r="15" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Group_749" data-name="Group 749" transform="translate(114.648 -223.352)">
+      <g id="Group_653-2" data-name="Group 653" transform="translate(534.385 688.459)">
+        <circle id="Ellipse_73-2" data-name="Ellipse 73" cx="5.629" cy="5.629" r="5.629" fill="#182a74"/>
+      </g>
+    </g>
+  </g>
+  <g id="Group_754" data-name="Group 754" transform="translate(-568.846 -283.736)">
+    <g id="Group_748-2" data-name="Group 748" transform="translate(105.277 -232.723)">
+      <g id="Group_653-3" data-name="Group 653" transform="translate(534.385 688.459)">
+        <circle id="Ellipse_73-3" data-name="Ellipse 73" cx="15" cy="15" r="15" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Group_749-2" data-name="Group 749" transform="translate(114.648 -223.352)">
+      <g id="Group_653-4" data-name="Group 653" transform="translate(534.385 688.459)">
+        <circle id="Ellipse_73-4" data-name="Ellipse 73" cx="5.629" cy="5.629" r="5.629" fill="#182a74"/>
+      </g>
+    </g>
+  </g>
+</svg>
