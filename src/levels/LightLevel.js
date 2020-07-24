@@ -2,13 +2,15 @@ import React from 'react';
 import SmModeSelector from '../ui/SmModeSelector';
 import SmWireSketch from '../ui/SmWireSketch';
 import ReadController from '../read/ReadController';
+import step1led from '../assets/svgs/light-read-step1-led.svg';
 
 const steps = [
   {
-    text: "Bla bla this is some text",
+    text: "So what are we making here? We will build an electronic circuit to light this LED!",
+    svg: step1led,
   },
   {
-    text: "Bla bla this is some more text",
+    text: "Let’s start with a battery. A battery can store energy. Like a pump it can push energy through a circuit. If you have a close look at the battery you will find a little plus on one end and a minus on the other end. The plus stands for positive charge. The minus stands for negative charge.",
   },
   {
     text: "Bla bla this is another bit of text",

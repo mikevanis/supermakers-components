@@ -14,6 +14,8 @@ const useStyles = makeStyles({
  content: {
    color: '#182a74',
    fontSize: 26,
+   lineHeight: 1.6,
+   maxWidth: 574,
  }
 });
 
