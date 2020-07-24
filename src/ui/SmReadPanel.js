@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
  root: {
-   padding: 20,
+   padding: 38,
  },
  indexNumber: {
    marginBottom: 30,
@@ -19,17 +19,26 @@ const useStyles = makeStyles({
 
 export default function SmReadPanel(props) {
   const classes = useStyles();
+
+  const renderTitle = () => {
+    if (props.index === 0) {
+      return props.title;
+    } else {
+      return props.index + '.';
+    }
+  }
   return(
     <Box
-      bgcolor="#ffafa6"
       className={classes.root}
+      display="flex"
+      flexDirection="column"
       flexGrow={1}
     >
       <Typography
         variant="h3"
         className={classes.indexNumber}
       >
-        {props.index}
+        {renderTitle()}
       </Typography>
       <div className={classes.content}>
         {props.children}

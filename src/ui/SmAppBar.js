@@ -22,7 +22,7 @@ export default function SmAppBar(props) {
 
   return(
     <AppBar
-      position="static"
+      position="relative"
       color="secondary"
     >
       <Toolbar>

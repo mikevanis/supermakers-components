@@ -51,12 +51,15 @@ export default function SmSliderButton(props) {
     }
   };
 
-  const handleButtonClick = (event, info) => {
+  const handleButtonClick = async (event, info) => {
+    console.log("button clicked");
     if (props.clickable) {
-      dragControl.start({
+      await dragControl.start({
         x: containerRef.current.offsetWidth - buttonRef.current.offsetWidth,
-      }, () => {
-        props.onSwiped();
+      });
+      props.onSwiped();
+      dragControl.start({
+        x: 0,
       });
     }
   };

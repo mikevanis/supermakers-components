@@ -33,7 +33,6 @@ const componentsInWorkspace = [
     nodes: [
       {
         x: 15, y: 45,
-        entryPoint: 'left',
         connectsTo: {
           name: 'led',
           node: 0
@@ -41,7 +40,6 @@ const componentsInWorkspace = [
       },
       {
         x: 347, y: 45,
-        entryPoint: 'right',
         connectsTo: {
           name: 'led',
           node: 1
@@ -55,7 +53,6 @@ const componentsInWorkspace = [
     nodes: [
       {
         x: 15, y: 197,
-        entryPoint: 'bottom',
         connectsTo: {
           name: 'battery',
           node: 0
@@ -63,7 +60,6 @@ const componentsInWorkspace = [
       },
       {
         x: 87, y: 164,
-        entryPoint: 'bottom',
         connectsTo: {
           name: 'battery',
           node: 1
@@ -138,6 +134,7 @@ class SmWireSketcher extends React.Component {
     console.log(e.item);
     // If we're near a node, let's create a path.
     if (e.item !== null) {
+      // TODO make sure item has nodes and data.
       e.item.data.nodes.forEach((node) => {
         const absoluteX = node.x + e.item.bounds.x;
         const absoluteY = node.y + e.item.bounds.y;
@@ -270,7 +267,7 @@ class SmWireSketcher extends React.Component {
 
     path.fillColor = {
         gradient: {
-            stops: [new paper.Color(255, 220, 22, 1), new paper.Color(255, 220, 22, 0)],
+            stops: [new paper.Color(255, 255, 0, 1), new paper.Color(255, 255, 0, 0)],
             radial: true
         },
         origin: path.position,
