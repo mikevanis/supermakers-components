@@ -102,7 +102,7 @@ class ReadController extends React.Component {
         />
         <SmReadPanel index={this.state.index} title={this.props.title}>
           {this.props.steps[this.state.index].text}
-          <img src={this.props.steps[this.state.index].svg}/>
+          {this.props.steps[this.state.index].svg()}
         </SmReadPanel>
         <Box
           display="flex"
