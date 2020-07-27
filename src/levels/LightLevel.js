@@ -27,11 +27,11 @@ const readSteps = [
   },
   {
     text: "To turn the light off, we need to break the circuit and add a switch. It does not matter where the switch goes. The effect is the same.",
-    svg: LightReadStep5Circuit
+    svg: LightReadStep5Circuit,
   },
   {
     text: "The battery pushes the electricity along the wires from the positive terminal, through the LED and back to the negative terminal. This creates a circuit.",
-  
+    svg: () => {return null},
   },
 ];
 

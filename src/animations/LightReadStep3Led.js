@@ -37,17 +37,17 @@ export default function LightReadStep3Led() {
         <g id="Group_673" data-name="Group 673">
           <path id="Rectangle_187" data-name="Rectangle 187" d="M-638.55,114.108h0A23.952,23.952,0,0,1-614.6,138.06v51.417h-47.9V138.06A23.951,23.951,0,0,1-638.55,114.108Z" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
           //legs
-          <motion.path initial={{pathLength: 0}} animate={{pathLength: [0,1]}} id="Path_235" data-name="Path 235" d="M-648.184,206.506V332.771a9.373,9.373,0,0,1-9.372,9.372h0" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
-          <motion.path initial={{pathLength: 0}} animate={{pathLength: [0, 1]}} id="Path_236" data-name="Path 236" d="M-631,206.507v42.357a9.372,9.372,0,0,0,9.372,9.372h0" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+          <motion.path initial={{pathLength: 0}} animate={{pathLength: 1}} transition={{duration: 2}} id="Path_235" data-name="Path 235" d="M-648.184,206.506V332.771a9.373,9.373,0,0,1-9.372,9.372h0" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+          <motion.path initial={{pathLength: 0}} animate={{pathLength: 1}} transition={{duration: 2}} id="Path_236" data-name="Path 236" d="M-631,206.507v42.357a9.372,9.372,0,0,0,9.372,9.372h0" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
           <rect id="Rectangle_188" data-name="Rectangle 188" width="47.903" height="17.03" transform="translate(-662.502 189.476)" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
         </g>
         <g id="Group_1268-2" data-name="Group 1268">
           //eyebrows
-          <motion.path initial={{translateY: 0}} animate={{translateY: 2}} transition={{yoyo: Infinity}} id="Path_457" data-name="Path 457" d="M-630.235,144.7a6.242,6.242,0,0,1,4.421,1.832,6.236,6.236,0,0,1,1.83,4.42" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+          <motion.path initial={{translateY: 0, rotate: 0}} animate={{translateY: 4, rotate: -20}} transition={{yoyo: Infinity}} id="Path_457" data-name="Path 457" d="M-630.235,144.7a6.242,6.242,0,0,1,4.421,1.832,6.236,6.236,0,0,1,1.83,4.42" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
           <path id="Path_458" data-name="Path 458" d="M-652.466,136.23a6.232,6.232,0,0,1,4.42-1.832,6.24,6.24,0,0,1,4.42,1.832" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
           <path id="Path_459" data-name="Path 459" d="M-628.055,150.948" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
-          <ellipse id="Ellipse_115" data-name="Ellipse 115" cx="3.72" cy="4.987" rx="3.72" ry="4.987" transform="translate(-633.956 159.211)" fill="#182a74"/>
-          <ellipse id="Ellipse_115-2" data-name="Ellipse 115" cx="3.72" cy="4.987" rx="3.72" ry="4.987" transform="translate(-651.375 159.211)" fill="#182a74"/>
+          <motion.ellipse initial={{rx: 3.72, ry: 4.987}} animate={{rx: 3.72*1.2, ry: 4.987*1.2}} transition={{yoyo: Infinity}} id="Ellipse_115" data-name="Ellipse 115" cx="3.72" cy="4.987" rx="3.72" ry="4.987" transform="translate(-633.956 159.211)" fill="#182a74"/>
+          <motion.ellipse initial={{rx: 3.72, ry: 4.987}} animate={{rx: 3.72*1.2, ry: 4.987*1.2}} transition={{yoyo: Infinity}} id="Ellipse_115-2" data-name="Ellipse 115" cx="3.72" cy="4.987" rx="3.72" ry="4.987" transform="translate(-651.375 159.211)" fill="#182a74"/>
         </g>
       </g>
     </g>

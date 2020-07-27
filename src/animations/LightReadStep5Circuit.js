@@ -35,8 +35,7 @@ export default function LightReadStep5Circuit() {
               <path id="Rectangle_181-2" data-name="Rectangle 181-2" d="M1555.342,409.87H1590.7a38.969,38.969,0,0,1,38.969,38.97h0a38.97,38.97,0,0,1-38.969,38.968h-35.359a38.97,38.97,0,0,1-38.968-38.968h0A38.97,38.97,0,0,1,1555.342,409.87Z" transform="translate(-1487.053 -387.804)" fill="#ffafa6" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
               <circle id="Ellipse_72-3" data-name="Ellipse 72-3" cx="38.969" cy="38.969" r="38.969" transform="translate(65.173 22.066)" fill="#ffafa6" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
               <g id="ON" transform="translate(89.207 45.014)">
-                <g id="ON-2" style="isolation: isolate">
-                  <text id="ON-2-2" data-name="ON" transform="translate(0 24)" fill="#182a74" font-size="25" font-family="Apercu-Regular, Apercu" letter-spacing="0.04em" style="isolation: isolate"><tspan x="0" y="0">ON</tspan></text>
+                <g id="ON-2">
                 </g>
               </g>
             </g>

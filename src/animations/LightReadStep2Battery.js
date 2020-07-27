@@ -16,14 +16,14 @@ export default function LightReadStep2Battery() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="537" height="83.37" viewBox="0 0 537 83.37">
   <g id="Group_1462" data-name="Group 1462" transform="translate(-107 -696.5)">
-    <text id="Plus" transform="translate(618 745)" fill="#182a74" font-size="26" font-family="Apercu-Regular, Apercu" letter-spacing="0.04em"><tspan x="-25.597" y="0">Plus</tspan></text>
+    <text id="Plus" transform="translate(618 745)" fill="#182a74" fontSize="26" fontFamily="Apercu-Regular, Apercu" letter-spacing="0.04em"><tspan x="-25.597" y="0">Plus</tspan></text>
     <g id="Group_701" data-name="Group 701" transform="translate(8.277 39.277)">
       <g id="Group_653" data-name="Group 653" transform="translate(534.385 688.459)">
         <circle id="Ellipse_73" data-name="Ellipse 73" cx="10" cy="10" r="10" fill="#fff"/>
       </g>
     </g>
     <g id="Group_702" data-name="Group 702" transform="translate(0 31)">
-      <text id="Minus" transform="translate(143 714)" fill="#182a74" font-size="26" font-family="Apercu-Regular, Apercu" letter-spacing="0.04em"><tspan x="-35.828" y="0">Minus</tspan></text>
+      <text id="Minus" transform="translate(143 714)" fill="#182a74" fontSize="26" fontFamily="Apercu-Regular, Apercu" letter-spacing="0.04em"><tspan x="-35.828" y="0">Minus</tspan></text>
       <g id="Group_660" data-name="Group 660" transform="translate(-326.385 8.277)">
         <g id="Group_653-2" data-name="Group 653" transform="translate(534.385 688.459)">
           <circle id="Ellipse_73-2" data-name="Ellipse 73" cx="10" cy="10" r="10" fill="#fff"/>
@@ -38,15 +38,15 @@ export default function LightReadStep2Battery() {
             <circle id="Ellipse_71-2-2" data-name="Ellipse 71-2-2" cx="41.185" cy="41.185" r="41.185" transform="translate(310.592 205.113)" fill="none" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
             <g id="Group_647" data-name="Group 647">
             // Minus symbol
-              <motion.rect id="Rectangle_184" data-name="Rectangle 184" width="22" height="3.571" transform="translate(341.392 244.613)" fill="#182a74"/>
+              <motion.rect initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.5, yoyo: Infinity}} id="Rectangle_184" data-name="Rectangle 184" width="22" height="3.571" transform="translate(341.392 244.613)" fill="#182a74"/>
             </g>
           </g>
           <g id="Group_676-2" data-name="Group 676-2">
             <circle id="Ellipse_72" data-name="Ellipse 72" cx="41.185" cy="41.185" r="41.185" transform="translate(487.978 205.113)" fill="#ffafa6" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
             <g id="Group_646" data-name="Group 646">
             // Plus symbol
-              <motion.rect id="Rectangle_182" data-name="Rectangle 182" width="3.571" height="22.004" transform="translate(527.376 235.296)" fill="#182a74"/> 
-              <motion.rect id="Rectangle_183" data-name="Rectangle 183" width="22.004" height="3.571" transform="translate(518.16 244.514)" fill="#182a74"/>
+              <motion.rect initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.5, yoyo: Infinity}} id="Rectangle_182" data-name="Rectangle 182" width="3.571" height="22.004" transform="translate(527.376 235.296)" fill="#182a74"/>
+              <motion.rect initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.5, yoyo: Infinity}} id="Rectangle_183" data-name="Rectangle 183" width="22.004" height="3.571" transform="translate(518.16 244.514)" fill="#182a74"/>
             </g>
           </g>
         </g>
