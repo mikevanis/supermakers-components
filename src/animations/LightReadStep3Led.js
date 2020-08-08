@@ -14,7 +14,7 @@ Step 6 - if you ever want to tweak the animation, come back and change this file
 
 export default function LightReadStep3Led() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="304" height="241.5" viewBox="0 0 304 241.5">
+    <svg transition={{yoyo: Infinity}} xmlns="http://www.w3.org/2000/svg" width="304" height="241.5" viewBox="0 0 304 241.5">
   <g id="Group_704" data-name="Group 704" transform="translate(-231 -626.5)">
     <g id="Group_663" data-name="Group 663" transform="translate(-70 89)">
       <text id="Minus" transform="translate(569 690)" fill="#182a74" font-size="26" font-family="Apercu-Regular, Apercu" letter-spacing="0.04em"><tspan x="-35.828" y="0">Minus</tspan></text>

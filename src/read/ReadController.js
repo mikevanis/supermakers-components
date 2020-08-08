@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
+import Typist from 'react-typist';
 import SmProgressBar from '../ui/SmProgressBar';
 import SmReadPanel from '../ui/SmReadPanel';
 import SmButton from '../ui/SmButton';
@@ -101,8 +102,10 @@ class ReadController extends React.Component {
           }
         />
         <SmReadPanel index={this.state.index} title={this.props.title}>
-          {this.props.steps[this.state.index].text}
-          {this.props.steps[this.state.index].svg()}
+          <Typist><Typist.Delay ms={1000}/>{this.props.steps[this.state.index].text}</Typist>
+          <Box alignItems="center">
+            {this.props.steps[this.state.index].svg()}
+          </Box>
         </SmReadPanel>
         <Box
           display="flex"

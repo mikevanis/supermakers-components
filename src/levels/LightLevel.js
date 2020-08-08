@@ -6,7 +6,7 @@ import LightReadStep1Led from '../animations/LightReadStep1Led';
 import LightReadStep2Battery from '../animations/LightReadStep2Battery';
 import LightReadStep3Led from '../animations/LightReadStep3Led';
 import LightReadStep4Circuit from '../animations/LightReadStep4Circuit';
-import LightReadStep5Circuit from '../animations/LightReadStep5Circuit'
+import LightReadStep5Circuit from '../animations/LightReadStep5Circuit';
 
 const readSteps = [
   {
@@ -18,7 +18,7 @@ const readSteps = [
     svg: LightReadStep2Battery,
   },
   {
-    text: "This is an LED which is a tiny source of light. This LED also has a positive and negative side. It needs to be connected in the right direction for it to turn on. You can identify the positive and negative sides by checking the length of its legs. The longer leg is always positive. The shorter leg is always negative.",
+    text: "This is an LED which is a tiny connected in ive sides by checking the length of its legs. The longer leg is always positive. The shorter leg is always negative.",
     svg: LightReadStep3Led,
   },
   {
