@@ -10,7 +10,6 @@ import SmButton from './SmButton';
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#182a74',
-    width: '100%',
     borderRadius: 100,
   },
   button: {
@@ -21,7 +20,6 @@ const useStyles = makeStyles({
 const clickableStyles = makeStyles({
   root: {
     backgroundColor: '#182a74',
-    width: 159,
     borderRadius: 100,
   },
   button: {
@@ -29,7 +27,7 @@ const clickableStyles = makeStyles({
       width: 'auto',
     },
   },
-})
+});
 
 export default function SmSliderButton(props) {
   const classes = useStyles();
@@ -67,6 +65,7 @@ export default function SmSliderButton(props) {
   return(
     <div
       className={props.clickable ? clickableClasses.root : classes.root}
+      style={props.fullWidth ? {width: "100%"} : {width: 159}}
       ref={containerRef}
     >
       <motion.div
