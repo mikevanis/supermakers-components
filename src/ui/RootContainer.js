@@ -9,7 +9,7 @@ class RootContainer extends React.Component {
 
   componentDidMount() {
     this.targetElement = document.querySelector('body');
-    //disableBodyScroll(this.targetElement);
+    disableBodyScroll(this.targetElement);
   }
 
   render() {

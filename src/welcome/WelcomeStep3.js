@@ -1,10 +1,10 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import WelcomeStep2Wind from '../animations/WelcomeStep2Wind';
+import WelcomeStep3Diagram from '../animations/WelcomeStep3Diagram';
 import SmSliderButton from '../ui/SmSliderButton';
 
-export default function WelcomeStep2(props) {
+export default function WelcomeStep3(props) {
   return(
     <Box
       bgcolor="#FFDC20"
@@ -16,20 +16,17 @@ export default function WelcomeStep2(props) {
     >
       <Box m="40px 0 0 0">
         <Typography variant="h4" style={{color: "#182a74", fontSize: 30}}>
-          Our first series of games is dedicated to renewable energies.
-          We will explore different types of renewable energies used all over
-          the world and focus on this particular one:
+          We will build electric circuits, design a lamp, make our very own
+          wind energy station, check how much energy it is creating, and test
+          if it is powering our lamp!
         </Typography>
       </Box>
       <Box>
-        <Typography variant="h1" style={{color: "#182a74", fontSize: 80}}>Wind!</Typography>
-      </Box>
-      <Box>
-        <WelcomeStep2Wind/>
+        <WelcomeStep3Diagram/>
       </Box>
       <Box>
         <SmSliderButton clickable fullWidth onSwiped={props.onNext}>
-          Wind? What are we going to do with wind?
+          Awesome! How does it work?
         </SmSliderButton>
       </Box>
     </Box>

@@ -31,7 +31,7 @@ export default function WelcomeStep1Character(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 646 164.872">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 646 164.872" preserveAspectRatio="xMidYMin" >
         <g id="Group_1631" data-name="Group 1631" transform="translate(-60 -287.128)">
           <g id="Group_1590" data-name="Group 1590" transform="translate(0 18)">
             <path id="Path_531" data-name="Path 531" d="M2882.931-2279.389c25.375,0,25.375,32.513,50.749,32.513s25.375-32.513,50.751-32.513,25.375,32.513,50.75,32.513,25.375-32.513,50.751-32.513,25.376,32.513,50.751,32.513,25.375-32.513,50.752-32.513,25.376,32.513,50.753,32.513,25.377-32.513,50.753-32.513" transform="translate(-2660.465 2630.129)" fill="none" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
