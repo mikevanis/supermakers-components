@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Intro from './Intro';
 import WelcomeStep1 from './WelcomeStep1';
 import WelcomeStep2 from './WelcomeStep2';
@@ -18,7 +19,7 @@ class Welcome extends React.Component {
 
   handleNext() {
     if (this.state.index === 4) {
-      console.log("Last!");
+      this.props.history.push("/home");
     }
     else {
       this.setState({index: this.state.index + 1});
@@ -49,4 +50,4 @@ class Welcome extends React.Component {
   }
 }
 
-export default Welcome;
+export default withRouter(Welcome);

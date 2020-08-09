@@ -23,7 +23,7 @@ export default function WelcomeStep3(props) {
         </Typography>
       </Box>
       <Box>
-        <WelcomeStep4Button/>
+        <WelcomeStep4Button next={props.onNext}/>
       </Box>
     </Box>
   )

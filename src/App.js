@@ -8,6 +8,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import RootContainer from './ui/RootContainer';
 import SmAppBar from './ui/SmAppBar';
 import Welcome from './welcome/Welcome';

@@ -26,7 +26,7 @@ class Intro extends React.Component {
           </Typography>
         </Box>
         <Box m="0px 60px 60px 60px" flexGrow={1} ref={this.boxRef}>
-          <WelcomeIntroAnimation/>
+          <WelcomeIntroAnimation next={this.props.onNext}/>
         </Box>
       </Box>
     );

@@ -43,9 +43,8 @@ export default function WelcomeStep4Button(props) {
 
   const controls = useAnimation();
   const onButtonPress = async () => {
-    console.log("Hi");
     await controls.start("pressed");
-    return console.log("Exit");
+    return setTimeout(props.next, 1);
   };
 
   return (

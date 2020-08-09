@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 /*
 Step 1 - duplicate file
@@ -27,9 +27,25 @@ const useStyles = makeStyles({
   },
 });
 
+const buttonVariants = {
+  unpressed: {x: 0},
+  pressed: {x: 80}
+};
+
+const rectVariants = {
+  unpressed: {width: 158.541, x: 0},
+  pressed: {width: 0, x: 110}
+};
 
 export default function WelcomeIntroAnimation(props) {
   const classes = useStyles();
+
+  const controls = useAnimation();
+  const onButtonPress = async () => {
+    await controls.start("pressed");
+    return setTimeout(props.next, 1);
+  };
+
   return (
     <div className={classes.root}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 665.435 695.31" preserveAspectRatio="xMidYMin" className={classes.svg}>
@@ -175,11 +191,11 @@ export default function WelcomeIntroAnimation(props) {
             <circle id="Ellipse_125" data-name="Ellipse 125" cx={55} cy={55} r={55} transform="translate(326 561)" fill="#ffdc20" />
             <g id="Group_1411" data-name="Group 1411" transform="translate(-163.291 -163.602)">
               <g id="Group_739" data-name="Group 739" transform="translate(424.184 740.565)">
-                <g id="Group_532" data-name="Group 532" transform="translate(0)">
-                  <rect id="Rectangle_156" data-name="Rectangle 156" width="158.541" height="78.603" rx="39.302" fill="#182a74" />
+                <motion.rect initial={"unpressed"} animate={controls} variants={rectVariants} id="Rectangle_156" data-name="Rectangle 156" width="158.541" height="78.603" rx="39.302" fill="#182a74" />
+                <motion.g onClick={onButtonPress} initial={"unpressed"} animate={controls} variants={buttonVariants}  id="Group_532" data-name="Group 532" transform="translate(0)">
                   <circle id="Ellipse_48" data-name="Ellipse 48" cx="39.485" cy="39.485" r="39.485" fill="#ff6d00" />
                   <text id="Start" transform="translate(15.108 47.037)" fill="#fff" fontSize={21} fontFamily="Helvetica" letterSpacing="0.04em"><tspan x={0} y={0}>Start</tspan></text>
-                </g>
+                </motion.g>
               </g>
             </g>
           </motion.g>
