@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import WelcomeStep1Character from '../animations/WelcomeStep1Character';
+import WelcomeStep1Brain from '../animations/WelcomeStep1Brain';
 import SmSliderButton from '../ui/SmSliderButton';
 
 export default function WelcomeStep1(props) {
@@ -19,7 +20,9 @@ export default function WelcomeStep1(props) {
         </Box>
         <Box display="flex">
           <Box p="0px 54px 0px 0px" flex="1">
-            <Typography variant="h1" style={{color: "#182a74", fontSize: 80}}>Super Makers</Typography>
+            <Box>
+              <Typography variant="h1" style={{color: "#182a74", fontSize: 80}}>Super Makers</Typography>
+            </Box>
           </Box>
           <Box flex="1">
             <Typography variant="h4" style={{color: "#182a74", fontSize: 30}}>
@@ -27,6 +30,9 @@ export default function WelcomeStep1(props) {
               We cross between virtual and physical sustainable worlds.
             </Typography>
           </Box>
+        </Box>
+        <Box>
+          <WelcomeStep1Brain/>
         </Box>
         <Box display="flex" justifyContent="space-between">
           <Box flex="1">

@@ -67,13 +67,15 @@ export default function WelcomeStep4Button(props) {
             </g>
             <g id="Group_1609" data-name="Group 1609" transform="translate(34.592 565.494)">
               <motion.g initial={"unpressed"} animate={controls} variants={handVariants}>
-                <motion.g id="Group_728" data-name="Group 728" transform="translate(0.001 0)">
-                  <path id="Path_238" data-name="Path 238" d="M465.492-185.158" transform="translate(-301.953 212.12)" fill="#fff" />
-                  <path id="Path_239" data-name="Path 239" d="M465.492-174.966" transform="translate(-301.953 220.05)" fill="#fff" />
-                  <path id="Path_240" data-name="Path 240" d="M534.091-156.263H493.809s-23.259-44.059-67.627-44.059l-27.189.941s-25.476,2.135-25.476,30.291,25.476,28.927,25.476,28.927h11.531c13.49,0,21.221,12.269,35.025,24.537,8.625,7.669,16.812,11.058,20.624,9.3,8.2-3.778,2.991-10.194-.917-14.045-8.608-8.478-14.026-12.4-2.3-17,9.927-3.894,71.134-2.121,71.134-2.121a8.386,8.386,0,0,0,8.387-8.385A8.387,8.387,0,0,0,534.091-156.263Z" transform="translate(-373.517 200.322)" fill="#fff" />
+                <motion.g initial={{translateX: 0}} animate={{translateX: 30}} transition={{delay: 1, yoyo: Infinity }} id="hand_wiggle">
+                  <motion.g id="Group_728" data-name="Group 728" transform="translate(0.001 0)">
+                    <path id="Path_238" data-name="Path 238" d="M465.492-185.158" transform="translate(-301.953 212.12)" fill="#fff" />
+                    <path id="Path_239" data-name="Path 239" d="M465.492-174.966" transform="translate(-301.953 220.05)" fill="#fff" />
+                    <path id="Path_240" data-name="Path 240" d="M534.091-156.263H493.809s-23.259-44.059-67.627-44.059l-27.189.941s-25.476,2.135-25.476,30.291,25.476,28.927,25.476,28.927h11.531c13.49,0,21.221,12.269,35.025,24.537,8.625,7.669,16.812,11.058,20.624,9.3,8.2-3.778,2.991-10.194-.917-14.045-8.608-8.478-14.026-12.4-2.3-17,9.927-3.894,71.134-2.121,71.134-2.121a8.386,8.386,0,0,0,8.387-8.385A8.387,8.387,0,0,0,534.091-156.263Z" transform="translate(-373.517 200.322)" fill="#fff" />
+                  </motion.g>
+                  <path id="Path_241" data-name="Path 241" d="M448.547-164.377s-13.46-25.5-39.137-25.5" transform="translate(-345.589 208.451)" fill="none" stroke="#182a74" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+                  <path id="Path_242" data-name="Path 242" d="M428.979-169.955S422.249-182.7,409.41-182.7" transform="translate(-345.589 214.03)" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
                 </motion.g>
-                <path id="Path_241" data-name="Path 241" d="M448.547-164.377s-13.46-25.5-39.137-25.5" transform="translate(-345.589 208.451)" fill="none" stroke="#182a74" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                <path id="Path_242" data-name="Path 242" d="M428.979-169.955S422.249-182.7,409.41-182.7" transform="translate(-345.589 214.03)" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
               </motion.g>
 
             </g>
