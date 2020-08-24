@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="125.304" height="118.357" viewBox="0 0 125.304 118.357">
+  <g id="Group_975" data-name="Group 975" transform="translate(-121.239 -720.07)">
+    <g id="Group_931" data-name="Group 931" transform="translate(150.286 734.423)">
+      <g id="Group_930" data-name="Group 930" transform="translate(0 0)">
+        <path id="Rectangle_213" data-name="Rectangle 213" d="M0,0H13.412a9.7,9.7,0,0,1,9.7,9.7v.07a9.7,9.7,0,0,1-9.7,9.7H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(23.87 23.112) rotate(-90)"/>
+        <path id="Path_318" data-name="Path 318" d="M203.521,770.3c0,7.645.394,12.732,8.672,19.175,8.545,6.651,15.2,15.4,15.2,28.111a33.605,33.605,0,1,1-67.211,0c0-12.715,6.653-21.461,15.2-28.111,8.278-6.442,8.672-11.529,8.672-19.175Z" transform="translate(-160.181 -747.186)" fill="#fff"/>
+        <line id="Line_125" data-name="Line 125" y2="32.457" transform="translate(29.206 23.112)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3.091"/>
+        <line id="Line_126" data-name="Line 126" y2="32.457" transform="translate(36.8 23.112)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="3.091"/>
+      </g>
+    </g>
+    <path id="Path_319" data-name="Path 319" d="M246.543,800.62h-125.3l20.5-55.341a38.624,38.624,0,0,1,36.22-25.209h11.868a38.624,38.624,0,0,1,36.22,25.209Z" fill="#182a74"/>
+  </g>
+</svg>
