@@ -19,6 +19,20 @@ const orangeStyles = makeStyles({
   },
 });
 
+const smallStyles = makeStyles({
+  root: {
+    borderRadius: 18,
+    padding: '0',
+    height: 35,
+    backgroundColor: '#ff6d00',
+    color: '#fff',
+  },
+  label: {
+    fontSize: 16,
+    textTransform: 'capitalize',
+  },
+});
+
 const blueStyles = makeStyles({
   root: {
     borderRadius: 100,
@@ -64,6 +78,9 @@ const SmButton = React.forwardRef((props, ref) => {
       break;
     case 'white':
       outputClass = whiteStyles();
+      break;
+    case 'small':
+      outputClass = smallStyles();
       break;
     default:
       outputClass = orangeStyles();

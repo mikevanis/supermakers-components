@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { motion } from 'framer-motion';
 
 /*
 Step 1 - duplicate file
@@ -31,7 +30,7 @@ export default function WelcomeStep1Character(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      
+
       <svg xmlns="http://www.w3.org/2000/svg" width="65.515" height="74.97" viewBox="0 0 65.515 74.97">
         <g id="Group_1581" data-name="Group 1581" transform="translate(-476.678 -25.502)">
           <path id="Path_77" data-name="Path 77" d="M509.548,89.515a10.957,10.957,0,1,1-21.913,0c0-.063,0-.126,0-.189a10.95,10.95,0,0,1-7.3-12.861,10.952,10.952,0,0,1-2.292-13.478,10.953,10.953,0,0,1,2.292-13.479,10.949,10.949,0,0,1,7.3-12.86c0-.063,0-.126,0-.189a10.957,10.957,0,0,1,21.913,0h-.224a10.957,10.957,0,0,1,21.913,0c0,.063,0,.126,0,.189a10.948,10.948,0,0,1,7.3,12.86,10.953,10.953,0,0,1,2.292,13.479,10.952,10.952,0,0,1-2.292,13.478,10.949,10.949,0,0,1-7.3,12.861c0,.063,0,.125,0,.189a10.957,10.957,0,1,1-21.913,0Z" transform="translate(0 0)" fill="#fff" />

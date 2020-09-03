@@ -28,8 +28,6 @@ class Welcome extends React.Component {
 
   renderStep() {
     switch(this.state.index) {
-      case 0:
-        return(<Intro onNext={this.handleNext}/>);
       case 1:
         return(<WelcomeStep1 onNext={this.handleNext}/>);
       case 2:
@@ -38,6 +36,8 @@ class Welcome extends React.Component {
         return(<WelcomeStep3 onNext={this.handleNext}/>);
       case 4:
         return(<WelcomeStep4 onNext={this.handleNext}/>);
+      default:
+        return(<Intro onNext={this.handleNext}/>);
     }
   }
 

@@ -66,6 +66,7 @@ export default function SmSliderButton(props) {
     <div
       className={props.clickable ? clickableClasses.root : classes.root}
       style={props.fullWidth ? {width: "100%"} : {width: 159}}
+      style={props.small ? {width: 96} : {width: 159}}
       ref={containerRef}
     >
       <motion.div
@@ -78,7 +79,7 @@ export default function SmSliderButton(props) {
         animate={dragControl}
       >
         <SmButton
-          color='orange'
+          color={props.small ? 'small' : 'orange'}
           onClick={handleButtonClick}
           ref={buttonRef}
           className={props.clickable ? clickableClasses.button : classes.button}

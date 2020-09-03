@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import WelcomeStep4Button from '../animations/WelcomeStep4Button';
-import SmSliderButton from '../ui/SmSliderButton';
 
 export default function WelcomeStep3(props) {
   return(

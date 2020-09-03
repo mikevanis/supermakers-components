@@ -26,8 +26,8 @@ export default function WelcomeStep1(props) {
           </Box>
           <Box flex="1">
             <Typography variant="h4" style={{color: "#182a74", fontSize: 30}}>
-              Super Makers is a series of projects and games.<br/><br/>
-              We cross between virtual and physical sustainable worlds.
+              Explore wind energy through a series of projects and games.<br/><br/>
+              We cross between virtual and physical worlds.
             </Typography>
           </Box>
         </Box>
