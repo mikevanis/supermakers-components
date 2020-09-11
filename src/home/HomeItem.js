@@ -1,32 +1,21 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
 import SmSliderButton from '../ui/SmSliderButton';
+import MenuItemAccordion from './MenuItemAccordion';
 import ladder from '../assets/svgs/menu/ladder.svg';
-import arrowUp from '../assets/svgs/menu/arrow-up.svg';
-import arrowDown from '../assets/svgs/menu/arrow-down.svg';
-import arrowBack from '../assets/svgs/menu/arrow-back.svg';
+import badge from '../assets/svgs/menu/badge.svg';
 
 class HomeItem extends React.Component {
 
-  renderLocked() {
-    return(
-      <Box>
-
-      </Box>
-    );
-  }
-
-  renderUnlocked() {
+  renderItem() {
     return(
       <Box
-        bgcolor={this.props.bgcolor}
+        bgcolor={this.props.state === "done" ? "none" : this.props.bgcolor}
+        border={this.props.state === "done" ? "1px solid #182a74" : ""}
         display="flex"
         flexDirection="column"
-        p="20px"
+        p="20px 20px 0 20px"
       >
         <Box display="flex" alignItems="flex-start">
           <Box m="5px 10px 0 0">
@@ -46,42 +35,35 @@ class HomeItem extends React.Component {
               top: "50%", left: "50%",
               transform: "translate(-50%, -50%)"
             }}>
-            <img src={this.props.svg} alt=""/>
+            <img src={this.props.state === "done" ? badge : this.props.svg} alt=""/>
           </Box>
         </Box>
 
-        <SmSliderButton
-          clickable
-          small
-          onSlide={this.props.onClick}
-        >
-          Go!
-        </SmSliderButton>
-        <Accordion>
-          <AccordionSummary expandIcon={<img src={arrowUp} alt=""/>}>
-            <Typography style={{color: "#182a74", fontSize: 26}}>
-              {this.props.title}
-            </Typography>
-            <Typography align="right" style={{color: "#182a74", fontSize: 26}}>
-              . . .
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography style={{color: "#182a74", fontSize: 16}}>
-              {this.props.body}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
+        {(this.props.state === "locked" || this.props.state === "unlocked") &&
+          <SmSliderButton
+            clickable
+            small
+            onSlide={this.props.onClick}
+            disabled={this.props.state === "locked" ? true : false}
+          >
+            Go!
+          </SmSliderButton>
+        }
+        {this.props.state === "done" &&
+          <Typography style={{color: "#182a74", fontSize: 26, textAlign: "center", marginBottom: "-6px"}}>
+            Done!
+          </Typography>
+        }
+        <MenuItemAccordion
+          title={this.props.title}
+          body={this.props.body}
+        />
       </Box>
     );
   }
 
   render() {
-    if (this.props.state === "unlocked") {
-      return this.renderUnlocked();
-    } else {
-      return this.renderLocked();
-    }
+    return this.renderItem();
   }
 }
 

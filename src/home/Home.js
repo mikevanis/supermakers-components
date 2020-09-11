@@ -17,31 +17,7 @@ import level7 from '../assets/svgs/menu/level7-windmill.svg';
 import level8 from '../assets/svgs/menu/level8-button.svg';
 import level9 from '../assets/svgs/menu/level9-eye.svg';
 
-const homeItems = [
-  {
-    title: "Hello Wind Energy",
-    svg: badge,
-    levelIndex: 1,
-    state: "unlocked",
-  },
-];
-
 class Home extends React.Component {
-
-  renderItems() {
-    homeItems.map((item) =>
-      <Grid item xs={12}>
-        {console.log(item.title)}
-        <HomeItem
-          title={item.title}
-          svg={item.svg}
-          levelIndex={item.levelIndex}
-          state={item.state}
-          key={item.title}
-        />
-      </Grid>
-    );
-  }
 
   render() {
     return(
@@ -60,7 +36,7 @@ class Home extends React.Component {
                 Wind
               </Typography>
               <Box m={"32px 0px 0px 0px"}>
-                <img src={wind} alt=""/>
+                <img src={wind} alt="" width="100%"/>
               </Box>
             </Box>
             <Box flex={1}>
@@ -78,7 +54,7 @@ class Home extends React.Component {
                 title="Hello World"
                 svg={level2}
                 levelIndex={1}
-                state={"unlocked"}
+                state={"done"}
                 key={"Hello World"}
                 bgcolor="#04BF8A"
                 body={"Learn about renewable energies."}
@@ -100,7 +76,7 @@ class Home extends React.Component {
                 title="Lamp Shade"
                 svg={level3}
                 levelIndex={3}
-                state={"unlocked"}
+                state={"locked"}
                 key={"Lamp Shade"}
                 bgcolor="#FFAFA6"
                 body={"Draw and design a lamp shade for your LED light."}
@@ -111,9 +87,9 @@ class Home extends React.Component {
                 title="Wind Energy"
                 svg={level4}
                 levelIndex={4}
-                state={"unlocked"}
+                state={"locked"}
                 key={"Wind Energy"}
-                bgcolor="#FF6D00"
+                bgcolor="#96D5EF"
                 body={"Build a circuit that uses wind energy to light the LED."}
               />
             </Grid>
@@ -122,7 +98,7 @@ class Home extends React.Component {
                 title="Draw Windmill"
                 svg={level5}
                 levelIndex={5}
-                state={"unlocked"}
+                state={"locked"}
                 key={"Draw Windmill"}
                 bgcolor="#96D5EF"
                 body={"Plan and draw your windmill for your wind energy station."}
@@ -133,9 +109,9 @@ class Home extends React.Component {
                 title="Origami"
                 svg={level6}
                 levelIndex={6}
-                state={"unlocked"}
+                state={"locked"}
                 key={"Origami"}
-                bgcolor="#182A74"
+                bgcolor="#04BF8A"
                 body={"Fold the blades for your very own windmill."}
               />
             </Grid>
@@ -144,7 +120,7 @@ class Home extends React.Component {
                 title="Wind Station"
                 svg={level7}
                 levelIndex={7}
-                state={"unlocked"}
+                state={"locked"}
                 key={"Wind Station"}
                 bgcolor="#04BF8A"
                 body={"Complete and set up your wind energy station."}
@@ -155,7 +131,7 @@ class Home extends React.Component {
                 title="Test Lab"
                 svg={level8}
                 levelIndex={8}
-                state={"unlocked"}
+                state={"locked"}
                 key={"Test Lab"}
                 bgcolor="#FFAFA6"
                 body={"Test how much electricity your wind energy station could generate."}
@@ -166,7 +142,7 @@ class Home extends React.Component {
                 title="Gallery"
                 svg={level9}
                 levelIndex={9}
-                state={"unlocked"}
+                state={"locked"}
                 key={"Gallery"}
                 bgcolor="#96D5EF"
                 body={"Have a look at wind energy stations from other Super Makers all over the world."}

@@ -50,43 +50,74 @@ export default function SmSliderButton(props) {
   };
 
   const handleButtonClick = async (event, info) => {
-    console.log("button clicked");
-    if (props.clickable) {
-      await dragControl.start({
-        x: containerRef.current.offsetWidth - buttonRef.current.offsetWidth,
-      });
-      props.onSwiped();
-      dragControl.start({
-        x: 0,
-      });
+    if (!props.disabled) {
+      console.log("button clicked");
+      if (props.clickable) {
+        await dragControl.start({
+          x: containerRef.current.offsetWidth - buttonRef.current.offsetWidth,
+        });
+        props.onSwiped();
+        dragControl.start({
+          x: 0,
+        });
+      }
     }
   };
 
-  return(
-    <div
-      className={props.clickable ? clickableClasses.root : classes.root}
-      style={props.fullWidth ? {width: "100%"} : {width: 159}}
-      style={props.small ? {width: 96} : {width: 159}}
-      ref={containerRef}
-    >
-      <motion.div
-        drag="x"
-        dragConstraints={{
-          left: 0,
-        }}
-        dragElastic={0.1}
-        onDragEnd={handleDragEnd}
-        animate={dragControl}
+  if (props.small) {
+    return(
+      <div
+        className={props.clickable ? clickableClasses.root : classes.root}
+        style={{width: 96, opacity: props.disabled ? 0.5 : 1}}
+        ref={containerRef}
       >
-        <SmButton
-          color={props.small ? 'small' : 'orange'}
-          onClick={handleButtonClick}
-          ref={buttonRef}
-          className={props.clickable ? clickableClasses.button : classes.button}
+        <motion.div
+          drag={props.disabled ? "" : "x"}
+          dragConstraints={{
+            left: 0,
+          }}
+          dragElastic={0.1}
+          onDragEnd={handleDragEnd}
+          animate={dragControl}
         >
-          {props.children}
-        </SmButton>
-      </motion.div>
-    </div>
-  );
+          <SmButton
+            color={props.small ? 'small' : 'orange'}
+            onClick={handleButtonClick}
+            ref={buttonRef}
+            disabled={props.disabled}
+            className={props.clickable ? clickableClasses.button : classes.button}
+          >
+            {props.children}
+          </SmButton>
+        </motion.div>
+      </div>
+    );
+  } else {
+    return(
+      <div
+        className={props.clickable ? clickableClasses.root : classes.root}
+        style={props.fullWidth ? {width: "100%"} : {width: 159}}
+        ref={containerRef}
+      >
+        <motion.div
+          drag="x"
+          dragConstraints={{
+            left: 0,
+          }}
+          dragElastic={0.1}
+          onDragEnd={handleDragEnd}
+          animate={dragControl}
+        >
+          <SmButton
+            color={props.small ? 'small' : 'orange'}
+            onClick={handleButtonClick}
+            ref={buttonRef}
+            className={props.clickable ? clickableClasses.button : classes.button}
+          >
+            {props.children}
+          </SmButton>
+        </motion.div>
+      </div>
+    );
+  }
 }
