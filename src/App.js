@@ -12,6 +12,7 @@ import RootContainer from './ui/RootContainer';
 import SmAppBar from './ui/SmAppBar';
 import Welcome from './welcome/Welcome';
 import Home from './home/Home';
+import LightLevel from './levels/LightLevel';
 import './App.css';
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route path="/home">
               <Home/>
+            </Route>
+            <Route path="/play/led">
+              <LightLevel/>
             </Route>
         </Switch>
         </Box>

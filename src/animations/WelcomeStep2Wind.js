@@ -21,9 +21,6 @@ const useStyles = makeStyles({
     height: "100%"
   },
   svg: {
-    display: "block",
-    position: "absolute",
-    maxHeight: "100%",
   },
 });
 
@@ -31,7 +28,7 @@ export default function WelcomeStep2Wind(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 644 316.728" preserveAspectRatio="xMidYMin" >
+      <svg className={classes.svg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 644 316.728" preserveAspectRatio="xMinYMid slice">
         <g id="Group_1598" data-name="Group 1598" transform="translate(-62 -511.5)">
           <motion.g initial={{translateX: -300}} animate={{translateX: 620}} transition={{duration: 2, delay: 1, loop: Infinity }} id="wind1_motion">
           <path id="wind" data-name="Path 534" d="M150.789,825.364a11.457,11.457,0,0,0-11.457,11.457,14.321,14.321,0,0,0,14.321,14.321,17.9,17.9,0,0,0,17.9-17.9,22.378,22.378,0,0,0-22.378-22.378H67.938" transform="translate(126.158 -23.414)" fill="none" stroke="#182a74" strokeMiterlimit={10} strokeWidth={1} />

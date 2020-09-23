@@ -43,7 +43,7 @@ class HomeItem extends React.Component {
           <SmSliderButton
             clickable
             small
-            onSlide={this.props.onClick}
+            onSwiped={() => {this.props.onClick(this.props.dest)}}
             disabled={this.props.state === "locked" ? true : false}
           >
             Go!

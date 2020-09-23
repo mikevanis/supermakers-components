@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +8,6 @@ import HomeItem from './HomeItem';
 import key from '../assets/svgs/menu/key.svg';
 import wind from '../assets/svgs/menu/wind.svg';
 
-import badge from '../assets/svgs/menu/badge.svg';
 import level2 from '../assets/svgs/menu/level2-led.svg';
 import level3 from '../assets/svgs/menu/level3-lamp.svg';
 import level4 from '../assets/svgs/menu/level4-wave.svg';
@@ -18,6 +18,16 @@ import level8 from '../assets/svgs/menu/level8-button.svg';
 import level9 from '../assets/svgs/menu/level9-eye.svg';
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(dest) {
+    console.log("destination: /play/" + dest);
+    this.props.history.push('/play/' + dest);
+  }
 
   render() {
     return(
@@ -69,6 +79,8 @@ class Home extends React.Component {
                 key={"LED Circuit"}
                 bgcolor="#04BF8A"
                 body={"Build an electronic circuit to light the LED."}
+                onClick={this.handleClick}
+                dest={"led"}
               />
             </Grid>
             <Grid item md={4} sm={6} xs={12}>
@@ -154,4 +166,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
