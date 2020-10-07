@@ -15,8 +15,8 @@ const useStyles = makeStyles({
    color: '#182a74',
    fontSize: 26,
    lineHeight: 1.6,
-   maxWidth: 574,
- }
+   height: '100%',
+ },
 });
 
 export default function SmReadPanel(props) {
@@ -42,9 +42,9 @@ export default function SmReadPanel(props) {
       >
         {renderTitle()}
       </Typography>
-      <div className={classes.content}>
+      <Box className={classes.content}>
         {props.children}
-      </div>
+      </Box>
     </Box>
   )
 }

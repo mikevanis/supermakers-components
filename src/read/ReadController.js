@@ -11,80 +11,6 @@ class ReadController extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleNextButton = this.handleNextButton.bind(this);
-    this.handleBackButton = this.handleBackButton.bind(this);
-
-    this.state = {
-      index: 0,
-    };
-  }
-
-  handleNextButton() {
-    console.log("Next");
-    if (this.state.index === this.props.steps.length-1) {
-      this.props.onComplete();
-    }
-    else {
-      this.setState({
-        index: this.state.index + 1,
-      });
-    }
-  }
-
-  handleBackButton() {
-    if (this.state.index === 0) {
-      this.props.onBack();
-    }
-    else {
-      this.setState({
-        index: this.state.index - 1,
-      });
-    }
-  }
-
-  renderButtonBox() {
-    if (this.state.index === 0) {
-      return(
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          flexDirection="row-reverse"
-          p="38px"
-        >
-          <Box justify="flex-end">
-            <SmSliderButton
-              clickable
-              onSwiped={this.handleNextButton}
-            >
-              Next
-            </SmSliderButton>
-          </Box>
-        </Box>
-      );
-    } else {
-      return(
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          p="38px"
-        >
-          <SmButton
-            color='blue'
-            onClick={this.handleBackButton}
-          >
-            Back
-          </SmButton>
-          <Box justify="flex-end">
-            <SmSliderButton
-              clickable
-              onSwiped={this.handleNextButton}
-            >
-              Next
-            </SmSliderButton>
-          </Box>
-        </Box>
-      );
-    }
   }
 
   render() {
@@ -98,13 +24,22 @@ class ReadController extends React.Component {
       >
         <SmProgressBar
           progress={
-            ((this.state.index + 1) / this.props.steps.length * 100) + '%'
+            ((this.props.index + 1) / this.props.steps.length * 100) + '%'
           }
         />
-        <SmReadPanel index={this.state.index} title={this.props.title}>
-          <Typist><Typist.Delay ms={1000}/>{this.props.steps[this.state.index].text}</Typist>
-          <Box alignItems="center">
-            {this.props.steps[this.state.index].svg()}
+        <SmReadPanel index={this.props.index} title={this.props.title}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignContent="space-between"
+            height="100%"
+          >
+            <Box flex="1" maxWidth="578px">
+              {this.props.steps[this.props.index].text}
+            </Box>
+            <Box display="flex" justifyContent="center">
+              {this.props.steps[this.props.index].svg()}
+            </Box>
           </Box>
         </SmReadPanel>
         <Box
@@ -112,10 +47,10 @@ class ReadController extends React.Component {
           p="38px"
           height="45px"
         >
-          {this.state.index !== 0 &&
+          {this.props.index !== 0 &&
             <SmButton
               color='blue'
-              onClick={this.handleBackButton}
+              onClick={this.props.onBack}
             >
               Back
             </SmButton>
@@ -124,7 +59,7 @@ class ReadController extends React.Component {
           <Box>
             <SmSliderButton
               clickable
-              onSwiped={this.handleNextButton}
+              onSwiped={this.props.onNext}
             >
               Next
             </SmSliderButton>

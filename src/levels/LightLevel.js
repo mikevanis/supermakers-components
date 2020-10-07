@@ -1,12 +1,15 @@
 import React from 'react';
 import SmModeSelector from '../ui/SmModeSelector';
 import SmWireSketch from '../ui/SmWireSketch';
+import SmModal from '../ui/SmModal';
 import ReadController from '../read/ReadController';
 import LightReadStep1Led from '../animations/LightReadStep1Led';
 import LightReadStep2Battery from '../animations/LightReadStep2Battery';
 import LightReadStep3Led from '../animations/LightReadStep3Led';
 import LightReadStep4Circuit from '../animations/LightReadStep4Circuit';
 import LightReadStep5Circuit from '../animations/LightReadStep5Circuit';
+
+import readmodal from '../assets/svgs/read-modal.svg';
 
 const readSteps = [
   {
@@ -46,26 +49,68 @@ class LightLevel extends React.Component {
     super(props);
 
     this.onModeClick = this.onModeClick.bind(this);
+    this.onReadNext = this.onReadNext.bind(this);
+    this.onReadBack = this.onReadBack.bind(this);
 
     this.state = {
       mode: 'read',
+      isReadModalVisible: false,
+      readIndex: 5,
     };
   }
 
   onModeClick(mode) {
-    this.setState({mode: mode});
+    this.setState({
+      mode: mode,
+      isReadModalVisible: false,
+    });
+  }
+
+  onReadComplete() {
+
+  }
+
+  onReadNext() {
+    console.log("Next");
+    if (this.state.readIndex === readSteps.length-1) {
+      // Read complete! Show modal.
+      console.log("Read complete!");
+      this.setState({isReadModalVisible: true});
+    }
+    else {
+      this.setState({
+        readIndex: this.state.readIndex + 1,
+      });
+    }
+  }
+
+  onReadBack() {
+    if (this.state.readIndex === 0) {
+      // Back to menu??
+    }
+    else {
+      this.setState({
+        readIndex: this.state.readIndex - 1,
+      });
+    }
   }
 
   render() {
     return(
       <React.Fragment>
         <SmModeSelector onModeClick={this.onModeClick}/>
+        {this.state.isReadModalVisible &&
+          <SmModal bgcolor="rgba(24,42,116,0.8)">
+            <img src={readmodal} alt="Now go make it yourself!" width="90%"/>
+          </SmModal>
+        }
         {this.state.mode === 'read' &&
           <ReadController
             steps={readSteps}
             title={"Hello Level 2"}
-            onBack={() => {console.log("BACK!")}}
-            onComplete={() => {console.log("Complete!")}}
+            onNext={this.onReadNext}
+            onBack={this.onReadBack}
+            index={this.state.readIndex}
           />
         }
         {this.state.mode === 'play' &&
