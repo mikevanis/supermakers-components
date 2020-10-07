@@ -55,7 +55,7 @@ class LightLevel extends React.Component {
     this.state = {
       mode: 'read',
       isReadModalVisible: false,
-      readIndex: 5,
+      readIndex: 0,
     };
   }
 
