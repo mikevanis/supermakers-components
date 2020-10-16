@@ -1,6 +1,6 @@
 import React from 'react';
 import SmModeSelector from '../ui/SmModeSelector';
-import SmWireSketch from '../ui/SmWireSketch';
+import LightGame from './LightGame';
 import SmModal from '../ui/SmModal';
 import ReadController from '../read/ReadController';
 import LightReadStep1Led from '../animations/LightReadStep1Led';
@@ -114,7 +114,7 @@ class LightLevel extends React.Component {
           />
         }
         {this.state.mode === 'play' &&
-          <SmWireSketch/>
+          <LightGame/>
         }
       </React.Fragment>
     );

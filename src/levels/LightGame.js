@@ -2,16 +2,30 @@ import React from 'react';
 import paper from 'paper';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import SmButton from './SmButton';
+import SmButton from '../ui/SmButton';
 import batterySvg from '../assets/svgs/battery.svg';
 import ledSvg from '../assets/svgs/led.svg';
+import { motion } from 'framer-motion';
 
 const canvasStyles = {
   width: "100%",
   height: "100%",
   display: 'block',
+  zIndex: '0',
   boxShadow: '0 0 0 20px #ffdc20 inset',
 };
+
+const testFrameStyles = {
+  position: 'absolute',
+  top: '20px',
+  left: '20px',
+  right: '20px',
+  bottom: '20px',
+  background: 'linear-gradient(90deg, red 50%, white 50%), linear-gradient(90deg, red 50%, white 50%), linear-gradient(0deg, red 50%, white 50%), linear-gradient(0deg, red 50%, white 50%)',
+  backgroundRepeat: 'repeat-x, repeat-x, repeat-y, repeat-y',
+  backgroundSize: '120px 5px, 120px 5px, 5px 120px, 5px 120px',
+  backgroundPosition: '0px 0px, 0px 100%, 0px 0px, 100% 0px',
+}
 
 const helpBarStyles = {
   root: {
@@ -25,6 +39,20 @@ const helpBarStyles = {
     alignSelf: 'center',
   }
 }
+
+const testButtonStyles = {
+  root: {
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    bottom: '40px',
+  },
+};
+
+const stagesText = [
+  "Connect the battery with the LED. Push the test button when you're ready!",
+  "Now connect the switch so you can turn the LED on and off!"
+];
 
 const componentsInWorkspace = [
   {
@@ -69,7 +97,7 @@ const componentsInWorkspace = [
   }
 ];
 
-class SmWireSketcher extends React.Component {
+class LightGame extends React.Component {
   constructor(props) {
     super(props);
     this.canvasRef = React.createRef();
@@ -79,12 +107,15 @@ class SmWireSketcher extends React.Component {
     this.onMouseDrag = this.onMouseDrag.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
     this.onFrame = this.onFrame.bind(this);
+    this.onTest = this.onTest.bind(this);
 
     this.state = {
       paths: [],
       items: [],
       currentPath: null,
       gradient: null,
+      isTesting: false,
+      stage: 0,
     };
   }
 
@@ -113,8 +144,8 @@ class SmWireSketcher extends React.Component {
         svgGroup.data = item;
         if (item.name === 'battery'){
           svgGroup.position = new paper.Point(
-            paper.view.center.x - svgGroup.bounds.width/2,
-            paper.view.center.y
+            paper.view.center.x - svgGroup.bounds.width/2 + 20,
+            paper.view.center.y / 2
           );
         } else if (item.name === 'led') {
           svgGroup.position = new paper.Point(
@@ -177,12 +208,6 @@ class SmWireSketcher extends React.Component {
             this.setState({
               paths: _paths,
               currentPath: null,
-            }, (state) => {
-              if (this.state.paths.length === 2)
-              if (this.isWiringCorrect()) {
-                this.shineLed();
-              }
-              console.log();
             });
           }
         });
@@ -284,6 +309,26 @@ class SmWireSketcher extends React.Component {
     }
   }
 
+  onTest() {
+    this.setState({isTesting: !this.state.isTesting}, () => {
+      if (this.state.isTesting) {
+        setTimeout(() => {
+          if (this.isWiringCorrect()) {
+            this.shineLed();
+          }
+          else {
+            console.log("Oops!");
+          }
+        }, 500);
+      } else {
+        if (this.state.gradient) {
+          this.state.gradient.remove();
+          this.setState({gradient: null});
+        }
+      }
+    });
+  }
+
   render() {
     return(
       <Box
@@ -293,21 +338,37 @@ class SmWireSketcher extends React.Component {
         width={1}
         flexGrow={1}
       >
-        <Box flexGrow={1}>
+        <Box flexGrow={1} position="relative">
           <canvas
             id="myCanvas"
             ref={this.canvasRef}
             data-paper-resize
             style={canvasStyles}
           ></canvas>
-
+          {this.state.isTesting &&
+          <motion.div
+            animate={{
+              backgroundPosition: '120px 0px, -120px 100%, 0px -120px, 100% 120px',
+            }}
+            transition={{
+              type: 'tween',
+              duration: 4,
+              loop: Infinity,
+              ease: 'linear',
+            }}
+            style={testFrameStyles}
+          ></motion.div>
+          }
+          <Box style={testButtonStyles.root}>
+            <SmButton color="orange" onClick={this.onTest}>Test</SmButton>
+          </Box>
         </Box>
         <Box
           style={helpBarStyles.root}
           display="flex"
         >
           <Typography style={helpBarStyles.content}>
-            Draw lines to connect power to the LED.
+            {stagesText[this.state.stage]}
           </Typography>
           <SmButton color="blue">Help</SmButton>
         </Box>
@@ -316,4 +377,4 @@ class SmWireSketcher extends React.Component {
   }
 }
 
-export default SmWireSketcher;
+export default LightGame;
