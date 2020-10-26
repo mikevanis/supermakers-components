@@ -64,14 +64,16 @@ const componentsInWorkspace = [
         connectsTo: {
           name: 'led',
           node: 0
-        }
+        },
+        isConnected: false,
       },
       {
         x: 347, y: 45,
         connectsTo: {
           name: 'led',
           node: 1
-        }
+        },
+        isConnected: false,
       },
     ],
   },
@@ -84,14 +86,16 @@ const componentsInWorkspace = [
         connectsTo: {
           name: 'battery',
           node: 0
-        }
+        },
+        isConnected: false,
       },
       {
         x: 87, y: 164,
         connectsTo: {
           name: 'battery',
           node: 1
-        }
+        },
+        isConnected: false,
       },
     ],
   }
@@ -115,6 +119,7 @@ class LightGame extends React.Component {
       currentPath: null,
       gradient: null,
       isTesting: false,
+      erasing: false,
       stage: 0,
     };
   }
@@ -164,13 +169,18 @@ class LightGame extends React.Component {
   onMouseDown(e) {
     console.log(e.item);
     // If we're near a node, let's create a path.
-    if (e.item !== null) {
+    if (e.item.data !== null) {
       // TODO make sure item has nodes and data.
       e.item.data.nodes.forEach((node) => {
         const absoluteX = node.x + e.item.bounds.x;
         const absoluteY = node.y + e.item.bounds.y;
         if (Math.abs(absoluteX - e.point.x) <= 15 && Math.abs(absoluteY - e.point.y) <= 15) {
           // We're on a node! Let's start drawing
+          let connectedPath = this.findConnectedPath(absoluteX, absoluteY);
+          if (connectedPath !== null) {
+            console.log("Path already connected!");
+            connectedPath.remove();
+          }
           console.log(node);
           const path = new paper.Path({
             segments: [new paper.Point(absoluteX, absoluteY)],
@@ -198,7 +208,13 @@ class LightGame extends React.Component {
           const absoluteX = node.x + item.bounds.x;
           const absoluteY = node.y + item.bounds.y;
           if (Math.abs(absoluteX - e.point.x) <= 15 && Math.abs(absoluteY - e.point.y) <= 15) {
+            // TODO Check if a path is already on the node.
             // We're on a node! Let's finish the path and store it.
+            let connectedPath = this.findConnectedPath(absoluteX, absoluteY);
+            if (connectedPath !== null) {
+              console.log("Path already connected!");
+              connectedPath.remove();
+            }
             hasLandedOnNode = true;
             let path = this.state.currentPath;
             path.add(new paper.Point(absoluteX, absoluteY));
@@ -222,6 +238,15 @@ class LightGame extends React.Component {
     }
   }
 
+  findConnectedPath(absoluteX, absoluteY) {
+    let result = null;
+    this.state.paths.forEach((p) => {
+      if (p.firstSegment.point.x === absoluteX && p.firstSegment.point.y === absoluteY) result = p;
+      if (p.lastSegment.point.x === absoluteX && p.lastSegment.point.y === absoluteY) result = p;
+    });
+    return result;
+  }
+
   // Mouse drag event
   onMouseDrag(e) {
     console.log(e);
@@ -238,6 +263,10 @@ class LightGame extends React.Component {
     console.log("Num of paths: " + this.state.paths.length);
     const paths = this.state.paths;
     const items = this.state.items;
+    if (this.state.paths.length < this.state.items.length) {
+      console.log("Oops! Looks like there are some wires missing.");
+      return false;
+    }
     paths.forEach((path) => {
       let firstItem, firstNode, lastItem, lastNode = null;
       items.forEach((item) => {
@@ -274,7 +303,10 @@ class LightGame extends React.Component {
     });
     if (correctPaths === 2) {
       return true;
-    } else return false;
+    } else {
+      console.log("Oops! Looks like there's a mistake in your circuit!");
+      return false;
+    }
   }
 
   shineLed() {
