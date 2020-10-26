@@ -1,10 +1,18 @@
 import React from 'react';
 import paper from 'paper';
+import { withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import IntermediateModal from './IntermediateModal';
+import WoopModal from './WoopModal';
 import SmButton from '../ui/SmButton';
+import SmSliderButton from '../ui/SmSliderButton';
 import batterySvg from '../assets/svgs/battery.svg';
 import ledSvg from '../assets/svgs/led.svg';
+import switchSvg from '../assets/svgs/switch.svg';
+import successLed from '../assets/svgs/success-led.svg';
+import missingConnectionsLed from '../assets/svgs/missing-connections-led.svg';
+import mistakeLed from '../assets/svgs/mistake-led.svg';
 import { motion } from 'framer-motion';
 
 const canvasStyles = {
@@ -65,7 +73,6 @@ const componentsInWorkspace = [
           name: 'led',
           node: 0
         },
-        isConnected: false,
       },
       {
         x: 347, y: 45,
@@ -73,9 +80,9 @@ const componentsInWorkspace = [
           name: 'led',
           node: 1
         },
-        isConnected: false,
       },
     ],
+    isActive: true,
   },
   {
     name: 'led',
@@ -87,7 +94,6 @@ const componentsInWorkspace = [
           name: 'battery',
           node: 0
         },
-        isConnected: false,
       },
       {
         x: 87, y: 164,
@@ -95,10 +101,31 @@ const componentsInWorkspace = [
           name: 'battery',
           node: 1
         },
-        isConnected: false,
       },
     ],
-  }
+    isActive: true,
+  },
+  {
+    name: 'switch',
+    svg: switchSvg,
+    nodes: [
+      {
+        x: 85, y: 15,
+        connectsTo: {
+          name: 'battery',
+          node: 0
+        },
+      },
+      {
+        x: 85, y: 188,
+        connectsTo: {
+          name: 'led',
+          node: 0
+        },
+      },
+    ],
+    isActive: false,
+  },
 ];
 
 class LightGame extends React.Component {
@@ -112,6 +139,11 @@ class LightGame extends React.Component {
     this.onMouseUp = this.onMouseUp.bind(this);
     this.onFrame = this.onFrame.bind(this);
     this.onTest = this.onTest.bind(this);
+    this.showNextStageModal = this.showNextStageModal.bind(this);
+    this.advanceStage = this.advanceStage.bind(this);
+    this.showErrorModal = this.showErrorModal.bind(this);
+    this.tryAgain = this.tryAgain.bind(this);
+    this.keepPlaying = this.keepPlaying.bind(this);
 
     this.state = {
       paths: [],
@@ -121,6 +153,11 @@ class LightGame extends React.Component {
       isTesting: false,
       erasing: false,
       stage: 0,
+      isNextStageModalOpen: false,
+      errorImage: null,
+      errorText: '',
+      isErrorModalOpen: false,
+      isWoopModalOpen: false,
     };
   }
 
@@ -157,7 +194,13 @@ class LightGame extends React.Component {
             paper.view.center.x + paper.view.size.width/4,
             paper.view.center.y
           );
+        } else if (item.name === 'switch') {
+          svgGroup.position = new paper.Point(
+            paper.view.center.x - paper.view.size.width / 5,
+            paper.view.center.y + paper.view.size.height / 5
+          );
         }
+        if (svgGroup.data.isActive === false) svgGroup.opacity = 0.3;
         importedItems.push(svgGroup);
       });
     });
@@ -169,26 +212,27 @@ class LightGame extends React.Component {
   onMouseDown(e) {
     console.log(e.item);
     // If we're near a node, let's create a path.
-    if (e.item.data !== null) {
-      // TODO make sure item has nodes and data.
+    if (e.item !== null && e.item.data !== null) {
       e.item.data.nodes.forEach((node) => {
-        const absoluteX = node.x + e.item.bounds.x;
-        const absoluteY = node.y + e.item.bounds.y;
-        if (Math.abs(absoluteX - e.point.x) <= 15 && Math.abs(absoluteY - e.point.y) <= 15) {
-          // We're on a node! Let's start drawing
-          let connectedPath = this.findConnectedPath(absoluteX, absoluteY);
-          if (connectedPath !== null) {
-            console.log("Path already connected!");
-            connectedPath.remove();
+        if (e.item.data.isActive) {
+          const absoluteX = node.x + e.item.bounds.x;
+          const absoluteY = node.y + e.item.bounds.y;
+          if (Math.abs(absoluteX - e.point.x) <= 15 && Math.abs(absoluteY - e.point.y) <= 15) {
+            // We're on a node! Let's start drawing
+            let connectedPath = this.findConnectedPath(absoluteX, absoluteY);
+            if (connectedPath !== null) {
+              console.log("Path already connected!");
+              connectedPath.remove();
+            }
+            console.log(node);
+            const path = new paper.Path({
+              segments: [new paper.Point(absoluteX, absoluteY)],
+              strokeColor: "#1a2874",
+              strokeWidth: 2,
+              strokeCap: "round"
+            });
+            this.setState({currentPath: path});
           }
-          console.log(node);
-          const path = new paper.Path({
-            segments: [new paper.Point(absoluteX, absoluteY)],
-            strokeColor: "#1a2874",
-            strokeWidth: 2,
-            strokeCap: "round"
-          });
-          this.setState({currentPath: path});
         }
       });
     }
@@ -215,16 +259,18 @@ class LightGame extends React.Component {
               console.log("Path already connected!");
               connectedPath.remove();
             }
-            hasLandedOnNode = true;
-            let path = this.state.currentPath;
-            path.add(new paper.Point(absoluteX, absoluteY));
-            path.simplify(80);
-            let _paths = this.state.paths;
-            _paths.push(path);
-            this.setState({
-              paths: _paths,
-              currentPath: null,
-            });
+            if (item.data.isActive) {
+              hasLandedOnNode = true;
+              let path = this.state.currentPath;
+              path.add(new paper.Point(absoluteX, absoluteY));
+              path.simplify(80);
+              let _paths = this.state.paths;
+              _paths.push(path);
+              this.setState({
+                paths: _paths,
+                currentPath: null,
+              });
+            }
           }
         });
       });
@@ -263,35 +309,42 @@ class LightGame extends React.Component {
     console.log("Num of paths: " + this.state.paths.length);
     const paths = this.state.paths;
     const items = this.state.items;
-    if (this.state.paths.length < this.state.items.length) {
+    let numOfActiveItems = 0;
+    items.forEach((item) => {
+      if (item.data.isActive) numOfActiveItems++;
+    });
+    if (this.state.paths.length < numOfActiveItems) {
       console.log("Oops! Looks like there are some wires missing.");
+      this.setErrorModalData("Oops! Looks like there are some wires missing.", missingConnectionsLed);
       return false;
     }
     paths.forEach((path) => {
       let firstItem, firstNode, lastItem, lastNode = null;
       items.forEach((item) => {
-        item.data.nodes.forEach((node, i) => {
-          const absoluteX = node.x + item.bounds.x;
-          const absoluteY = node.y + item.bounds.y;
-          if (
-            path.firstSegment.point.x === absoluteX &&
-            path.firstSegment.point.y === absoluteY
-          ) {
-            // Node matches with start of path.
-            firstItem = item;
-            firstNode = i;
-            console.log('first item of path: ' + firstItem.data.name + firstNode);
-          }
-          if (
-            path.lastSegment.point.x === absoluteX &&
-            path.lastSegment.point.y === absoluteY
-          ) {
-            // Node matches with end of path.
-            lastItem = item;
-            lastNode = i;
-            console.log('last item of path: ' + lastItem.data.name + lastNode);
-          }
-        });
+        if (item.data.isActive) {
+          item.data.nodes.forEach((node, i) => {
+            const absoluteX = node.x + item.bounds.x;
+            const absoluteY = node.y + item.bounds.y;
+            if (
+              path.firstSegment.point.x === absoluteX &&
+              path.firstSegment.point.y === absoluteY
+            ) {
+              // Node matches with start of path.
+              firstItem = item;
+              firstNode = i;
+              console.log('first item of path: ' + firstItem.data.name + firstNode);
+            }
+            if (
+              path.lastSegment.point.x === absoluteX &&
+              path.lastSegment.point.y === absoluteY
+            ) {
+              // Node matches with end of path.
+              lastItem = item;
+              lastNode = i;
+              console.log('last item of path: ' + lastItem.data.name + lastNode);
+            }
+          });
+        }
       });
       // Here we have to check if path connects two items correctly.
       if (firstItem.data.nodes[firstNode].connectsTo.name === lastItem.data.name) {
@@ -301,10 +354,11 @@ class LightGame extends React.Component {
         }
       }
     });
-    if (correctPaths === 2) {
+    if (correctPaths === numOfActiveItems) {
       return true;
     } else {
       console.log("Oops! Looks like there's a mistake in your circuit!");
+      this.setErrorModalData("Oops! Looks like there's a mistake in your circuit!", mistakeLed);
       return false;
     }
   }
@@ -333,6 +387,14 @@ class LightGame extends React.Component {
     this.setState({gradient: path});
   }
 
+  unshineLed() {
+    const gradient = this.state.gradient;
+    if (gradient !== null) {
+      gradient.remove();
+      this.setState({gradient: null});
+    }
+  }
+
   onFrame(e) {
     if (this.state.gradient !== null) {
       let stop = this.state.gradient.fillColor.gradient.stops[1];
@@ -346,67 +408,162 @@ class LightGame extends React.Component {
       if (this.state.isTesting) {
         setTimeout(() => {
           if (this.isWiringCorrect()) {
+            // TODO check if switch is actually pressed before shining led.
             this.shineLed();
+            setTimeout(() => {
+              if (this.state.stage === 0) this.showNextStageModal();
+              else this.showWhoopModal();
+            }, 1500);
           }
           else {
-            console.log("Oops!");
+            this.showErrorModal();
           }
         }, 500);
       } else {
         if (this.state.gradient) {
-          this.state.gradient.remove();
-          this.setState({gradient: null});
+          this.unshineLed();
         }
       }
     });
   }
 
+  showNextStageModal() {
+    console.log("Nice one! Now wire up the switch.");
+    this.setState({isNextStageModalOpen: true});
+  }
+
+  showWhoopModal() {
+    console.log("Whoop!");
+    this.setState({
+      isWoopModalOpen: true,
+    });
+  }
+
+  showErrorModal() {
+    this.setState({
+      isErrorModalOpen: true,
+    });
+  }
+
+  setErrorModalData(eText, eImage) {
+    this.setState({
+      errorText: eText,
+      errorImage: eImage,
+    });
+  }
+
+  tryAgain() {
+    this.setState({
+      isErrorModalOpen: false,
+      isTesting: false,
+    });
+  }
+
+  keepPlaying() {
+    this.setState({isWoopModalOpen: false});
+  }
+
+  advanceStage() {
+    if (this.state.stage === 0) {
+      let items = this.state.items;
+      items.forEach((item) => {
+        if (item.data.name === "switch") {
+          item.data.isActive = true;
+          item.opacity = 1;
+        }
+      });
+      this.unshineLed();
+      this.setState({
+        items: items,
+        stage: this.state.stage + 1,
+        isNextStageModalOpen: false,
+        isTesting: false
+      }, this.unshineLed);
+    }
+  }
+
   render() {
     return(
       <Box
+        position="relative"
         display="flex"
         flexDirection="column"
         ref={this.containerRef}
         width={1}
         flexGrow={1}
+        styles={{position: 'relative'}}
       >
-        <Box flexGrow={1} position="relative">
-          <canvas
-            id="myCanvas"
-            ref={this.canvasRef}
-            data-paper-resize
-            style={canvasStyles}
-          ></canvas>
-          {this.state.isTesting &&
-          <motion.div
-            animate={{
-              backgroundPosition: '120px 0px, -120px 100%, 0px -120px, 100% 120px',
-            }}
-            transition={{
-              type: 'tween',
-              duration: 4,
-              loop: Infinity,
-              ease: 'linear',
-            }}
-            style={testFrameStyles}
-          ></motion.div>
-          }
-          <Box style={testButtonStyles.root}>
-            <SmButton color="orange" onClick={this.onTest}>Test</SmButton>
-          </Box>
-        </Box>
-        <Box
-          style={helpBarStyles.root}
-          display="flex"
+        <WoopModal
+          isOpen={this.state.isWoopModalOpen}
+          onBack={this.keepPlaying}
+          onNextLevel={() => { this.props.history.push('/home');}}
+        />
+        <IntermediateModal
+          isOpen={this.state.isNextStageModalOpen}
+          bgcolor="#ffdc20"
+          image={successLed}
+          buttonText="Continue"
+          textColor="#182a74"
+          onButtonClick={this.advanceStage}
         >
-          <Typography style={helpBarStyles.content}>
-            {stagesText[this.state.stage]}
-          </Typography>
-          <SmButton color="blue">Help</SmButton>
+          Great Work!
+        </IntermediateModal>
+        <IntermediateModal
+          isOpen={this.state.isErrorModalOpen}
+          bgcolor="#182a74"
+          image={this.state.errorImage}
+          buttonText="Try again"
+          textColor="#fff"
+          onButtonClick={this.tryAgain}
+        >
+          {this.state.errorText}
+        </IntermediateModal>
+        <Box
+          display="flex"
+          flexDirection="column"
+          ref={this.containerRef}
+          width={1}
+          flexGrow={1}
+          styles={{position: 'relative'}}
+        >
+          <Box flexGrow={1} position="relative">
+            <canvas
+              id="myCanvas"
+              ref={this.canvasRef}
+              data-paper-resize
+              style={canvasStyles}
+            ></canvas>
+            {this.state.isTesting &&
+            <motion.div
+              animate={{
+                backgroundPosition: '120px 0px, -120px 100%, 0px -120px, 100% 120px',
+              }}
+              transition={{
+                type: 'tween',
+                duration: 4,
+                loop: Infinity,
+                ease: 'linear',
+              }}
+              style={testFrameStyles}
+            ></motion.div>
+            }
+            <Box style={testButtonStyles.root}>
+              <SmButton color="orange" onClick={this.onTest}>Test</SmButton>
+            </Box>
+          </Box>
+          <Box
+            style={helpBarStyles.root}
+            display="flex"
+          >
+            <Typography style={helpBarStyles.content}>
+              {stagesText[this.state.stage]}
+            </Typography>
+            <SmButton color="blue">Help</SmButton>
+          </Box>
         </Box>
       </Box>
     );
   }
 }
 
-export default LightGame;
+export default withRouter(LightGame);
