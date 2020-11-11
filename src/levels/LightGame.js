@@ -13,6 +13,7 @@ import switchSvg from '../assets/svgs/switch.svg';
 import successLed from '../assets/svgs/success-led.svg';
 import missingConnectionsLed from '../assets/svgs/missing-connections-led.svg';
 import mistakeLed from '../assets/svgs/mistake-led.svg';
+import helpDiagram from '../assets/svgs/help-led.svg';
 import { motion } from 'framer-motion';
 
 const canvasStyles = {
@@ -144,6 +145,8 @@ class LightGame extends React.Component {
     this.showErrorModal = this.showErrorModal.bind(this);
     this.tryAgain = this.tryAgain.bind(this);
     this.keepPlaying = this.keepPlaying.bind(this);
+    this.showHelpModal = this.showHelpModal.bind(this);
+    this.hideHelpModal = this.hideHelpModal.bind(this);
 
     this.state = {
       paths: [],
@@ -158,6 +161,7 @@ class LightGame extends React.Component {
       errorText: '',
       isErrorModalOpen: false,
       isWoopModalOpen: false,
+      isHelpModalOpen: false,
     };
   }
 
@@ -443,6 +447,14 @@ class LightGame extends React.Component {
     });
   }
 
+  showHelpModal() {
+    this.setState({ isHelpModalOpen: true });
+  }
+
+  hideHelpModal() {
+    this.setState({ isHelpModalOpen: false });
+  }
+
   showNextStageModal() {
     console.log("Nice one! Now wire up the switch.");
     this.setState({isNextStageModalOpen: true});
@@ -525,6 +537,16 @@ class LightGame extends React.Component {
           Great Work!
         </IntermediateModal>
         <IntermediateModal
+          isOpen={this.state.isHelpModalOpen}
+          bgcolor="#182a74"
+          image={helpDiagram}
+          buttonText="Continue"
+          textColor="#fff"
+          onButtonClick={this.hideHelpModal}
+        >
+          Here's what your circuit should look like at the end.
+        </IntermediateModal>
+        <IntermediateModal
           isOpen={this.state.isErrorModalOpen}
           bgcolor="#182a74"
           image={this.state.errorImage}
@@ -574,7 +596,7 @@ class LightGame extends React.Component {
             <Typography style={helpBarStyles.content}>
               {stagesText[this.state.stage]}
             </Typography>
-            <SmButton color="blue">Help</SmButton>
+            <SmButton color="blue" onClick={this.showHelpModal}>Help</SmButton>
           </Box>
         </Box>
       </Box>
