@@ -162,6 +162,7 @@ class LightGame extends React.Component {
       isErrorModalOpen: false,
       isWoopModalOpen: false,
       isHelpModalOpen: false,
+      activeTool: null,
     };
   }
 
@@ -172,6 +173,7 @@ class LightGame extends React.Component {
 
     // Setup tool
     let tool = new paper.Tool();
+    this.setState({activeTool: tool});
     tool.onMouseDown = this.onMouseDown;
     tool.onMouseDrag = this.onMouseDrag;
     tool.onMouseUp = this.onMouseUp;
@@ -179,6 +181,10 @@ class LightGame extends React.Component {
 
     // Load SVGs
     this.importItems(componentsInWorkspace, project);
+  }
+
+  componentWillUnmount() {
+    this.state.activeTool.remove();
   }
 
   // Import all items within an array
