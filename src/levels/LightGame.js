@@ -223,6 +223,7 @@ class LightGame extends React.Component {
             if (connectedPath !== null) {
               console.log("Path already connected!");
               connectedPath.remove();
+              this.deleteConnectedPath(absoluteX, absoluteY);
             }
             console.log(node);
             const path = new paper.Path({
@@ -258,6 +259,7 @@ class LightGame extends React.Component {
             if (connectedPath !== null) {
               console.log("Path already connected!");
               connectedPath.remove();
+              this.deleteConnectedPath(absoluteX, absoluteY);
             }
             if (item.data.isActive) {
               hasLandedOnNode = true;
@@ -291,6 +293,20 @@ class LightGame extends React.Component {
       if (p.lastSegment.point.x === absoluteX && p.lastSegment.point.y === absoluteY) result = p;
     });
     return result;
+  }
+
+  deleteConnectedPath(absoluteX, absoluteY) {
+    let result = null;
+    let newPaths = this.state.paths;
+    newPaths.forEach((p, index) => {
+      if (p.firstSegment.point.x === absoluteX && p.firstSegment.point.y === absoluteY) result = index;
+      if (p.lastSegment.point.x === absoluteX && p.lastSegment.point.y === absoluteY) result = index;
+    });
+    if (result !== null) {
+      newPaths.splice(result, 1);
+      console.log("Deleted path with index " + result);
+      this.setState({paths: newPaths});
+    }
   }
 
   // Mouse drag event
