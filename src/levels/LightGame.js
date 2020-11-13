@@ -84,6 +84,10 @@ const componentsInWorkspace = [
             name: 'led',
             node: 1
           },
+          {
+            name: 'switch',
+            node: 0
+          },
         ],
       },
     ],
@@ -109,6 +113,10 @@ const componentsInWorkspace = [
             name: 'battery',
             node: 1
           },
+          {
+            name: 'switch',
+            node: 1
+          },
         ],
       },
     ],
@@ -123,7 +131,7 @@ const componentsInWorkspace = [
         connectsTo: [
           {
             name: 'battery',
-            node: 0
+            node: 1
           },
         ],
       },
@@ -132,7 +140,7 @@ const componentsInWorkspace = [
         connectsTo: [
           {
             name: 'led',
-            node: 0
+            node: 1
           },
         ],
       },
