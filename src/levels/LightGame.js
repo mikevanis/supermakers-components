@@ -70,17 +70,21 @@ const componentsInWorkspace = [
     nodes: [
       {
         x: 15, y: 45,
-        connectsTo: {
-          name: 'led',
-          node: 0
-        },
+        connectsTo: [
+          {
+            name: 'led',
+            node: 0
+          }
+        ],
       },
       {
         x: 347, y: 45,
-        connectsTo: {
-          name: 'led',
-          node: 1
-        },
+        connectsTo: [
+          {
+            name: 'led',
+            node: 1
+          },
+        ],
       },
     ],
     isActive: true,
@@ -91,17 +95,21 @@ const componentsInWorkspace = [
     nodes: [
       {
         x: 15, y: 197,
-        connectsTo: {
-          name: 'battery',
-          node: 0
-        },
+        connectsTo: [
+          {
+            name: 'battery',
+            node: 0
+          },
+        ],
       },
       {
         x: 87, y: 164,
-        connectsTo: {
-          name: 'battery',
-          node: 1
-        },
+        connectsTo: [
+          {
+            name: 'battery',
+            node: 1
+          },
+        ],
       },
     ],
     isActive: true,
@@ -112,17 +120,21 @@ const componentsInWorkspace = [
     nodes: [
       {
         x: 85, y: 15,
-        connectsTo: {
-          name: 'battery',
-          node: 0
-        },
+        connectsTo: [
+          {
+            name: 'battery',
+            node: 0
+          },
+        ],
       },
       {
         x: 85, y: 188,
-        connectsTo: {
-          name: 'led',
-          node: 0
-        },
+        connectsTo: [
+          {
+            name: 'led',
+            node: 0
+          },
+        ],
       },
     ],
     isActive: false,
@@ -163,6 +175,7 @@ class LightGame extends React.Component {
       isWoopModalOpen: false,
       isHelpModalOpen: false,
       activeTool: null,
+      isSwitchPressed: false,
     };
   }
 
@@ -221,6 +234,7 @@ class LightGame extends React.Component {
   // Mouse down event
   onMouseDown(e) {
     console.log(e.item);
+    let onNode = false;
     // If we're near a node, let's create a path.
     if (e.item !== null && e.item.data !== null) {
       e.item.data.nodes.forEach((node) => {
@@ -243,9 +257,17 @@ class LightGame extends React.Component {
               strokeCap: "round"
             });
             this.setState({currentPath: path});
+            onNode = true;
           }
         }
       });
+    }
+
+    if (this.state.isTesting && this.state.stage === 1 && onNode == false) {
+      // Check if switch is being pressed.
+      if (e.item.data.name === 'switch') {
+        console.log("Switch!");
+      }
     }
   }
 
@@ -263,7 +285,6 @@ class LightGame extends React.Component {
           const absoluteX = node.x + item.bounds.x;
           const absoluteY = node.y + item.bounds.y;
           if (Math.abs(absoluteX - e.point.x) <= 15 && Math.abs(absoluteY - e.point.y) <= 15) {
-            // TODO Check if a path is already on the node.
             // We're on a node! Let's finish the path and store it.
             let connectedPath = this.findConnectedPath(absoluteX, absoluteY);
             if (connectedPath !== null) {
@@ -372,13 +393,15 @@ class LightGame extends React.Component {
           });
         }
       });
-      // Here we have to check if path connects two items correctly.
-      if (firstItem.data.nodes[firstNode].connectsTo.name === lastItem.data.name) {
-        // Node is connected to the right item. Is it connected to the right node?
-        if (firstItem.data.nodes[firstNode].connectsTo.node === lastNode) {
-          correctPaths++;
+      firstItem.data.nodes[firstNode].connectsTo.forEach((connection) => {
+        // Here we have to check if path connects two items correctly.
+        if (connection.name === lastItem.data.name) {
+          // Node is connected to the right item. Is it connected to the right node?
+          if (connection.node === lastNode) {
+            correctPaths++;
+          }
         }
-      }
+      });
     });
     if (correctPaths === numOfActiveItems) {
       return true;
@@ -432,25 +455,29 @@ class LightGame extends React.Component {
   onTest() {
     this.setState({isTesting: !this.state.isTesting}, () => {
       if (this.state.isTesting) {
-        setTimeout(() => {
-          if (this.isWiringCorrect()) {
-            // TODO check if switch is actually pressed before shining led.
-            this.shineLed();
-            setTimeout(() => {
-              if (this.state.stage === 0) this.showNextStageModal();
-              else this.showWhoopModal();
-            }, 1500);
-          }
-          else {
-            this.showErrorModal();
-          }
-        }, 500);
+        this.checkWiring();
       } else {
         if (this.state.gradient) {
           this.unshineLed();
         }
       }
     });
+  }
+
+  checkWiring() {
+    setTimeout(() => {
+      let isCorrect = this.isWiringCorrect();
+      if ((isCorrect && this.state.stage === 0) || (this.isWiringCorrect() && this.state.isSwitchPressed && this.state.stage === 0)) {
+        this.shineLed();
+        setTimeout(() => {
+          if (this.state.stage === 0) this.showNextStageModal();
+          else this.showWhoopModal();
+        }, 1500);
+      }
+      else if (!isCorrect) {
+        this.showErrorModal();
+      }
+    }, 500);
   }
 
   showHelpModal() {
