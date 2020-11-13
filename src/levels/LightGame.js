@@ -244,7 +244,7 @@ class LightGame extends React.Component {
     console.log(e.item);
     let onNode = false;
     // If we're near a node, let's create a path.
-    if (e.item !== null && e.item.data !== null) {
+    if (e.item && e.item.data && e.item.data.nodes) {
       e.item.data.nodes.forEach((node) => {
         if (e.item.data.isActive) {
           const absoluteX = node.x + e.item.bounds.x;
