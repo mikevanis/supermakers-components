@@ -26,6 +26,7 @@ const canvasStyles = {
 
 const testFrameStyles = {
   position: 'absolute',
+  pointerEvents: 'none',
   top: '20px',
   left: '20px',
   right: '20px',
@@ -274,7 +275,9 @@ class LightGame extends React.Component {
     if (this.state.isTesting && this.state.stage === 1 && onNode == false) {
       // Check if switch is being pressed.
       if (e.item.data.name === 'switch') {
-        console.log("Switch!");
+        this.setState({isSwitchPressed: true}, () => {
+          this.checkWiring();
+        });
       }
     }
   }
@@ -475,7 +478,7 @@ class LightGame extends React.Component {
   checkWiring() {
     setTimeout(() => {
       let isCorrect = this.isWiringCorrect();
-      if ((isCorrect && this.state.stage === 0) || (this.isWiringCorrect() && this.state.isSwitchPressed && this.state.stage === 0)) {
+      if ((isCorrect && this.state.stage === 0) || (isCorrect && this.state.isSwitchPressed && this.state.stage === 1)) {
         this.shineLed();
         setTimeout(() => {
           if (this.state.stage === 0) this.showNextStageModal();
