@@ -184,6 +184,7 @@ class LightGame extends React.Component {
       isWoopModalOpen: false,
       isHelpModalOpen: false,
       activeTool: null,
+      activeProject: null,
       isSwitchPressed: false,
     };
   }
@@ -193,13 +194,19 @@ class LightGame extends React.Component {
     canvas.style.background = "#04bf8a";
     const project = new paper.Project(canvas);
 
+
     // Setup tool
     let tool = new paper.Tool();
-    this.setState({activeTool: tool});
+
     tool.onMouseDown = this.onMouseDown;
     tool.onMouseDrag = this.onMouseDrag;
     tool.onMouseUp = this.onMouseUp;
     paper.view.onFrame = this.onFrame;
+
+    this.setState({
+      activeTool: tool,
+      activeProject: project,
+    });
 
     // Load SVGs
     this.importItems(componentsInWorkspace, project);
@@ -207,6 +214,10 @@ class LightGame extends React.Component {
 
   componentWillUnmount() {
     this.state.activeTool.remove();
+    this.state.activeProject.clear();
+    this.state.activeProject.remove();
+    this.setState({stage: 0});
+    console.log("Component unmounted");
   }
 
   // Import all items within an array

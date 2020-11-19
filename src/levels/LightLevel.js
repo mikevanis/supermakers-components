@@ -8,6 +8,7 @@ import LightReadStep2Battery from '../animations/LightReadStep2Battery';
 import LightReadStep3Led from '../animations/LightReadStep3Led';
 import LightReadStep4Circuit from '../animations/LightReadStep4Circuit';
 import LightReadStep5Circuit from '../animations/LightReadStep5Circuit';
+import LightReadStep6Circuit from '../animations/LightReadStep6Circuit';
 
 import readmodal from '../assets/svgs/read-modal.svg';
 
@@ -34,7 +35,7 @@ const readSteps = [
   },
   {
     text: "The battery pushes the electricity along the wires from the positive terminal, through the LED and back to the negative terminal. This creates a circuit.",
-    svg: () => {return null},
+    svg: LightReadStep6Circuit,
   },
 ];
 
@@ -55,7 +56,7 @@ class LightLevel extends React.Component {
     this.state = {
       mode: 'read',
       isReadModalVisible: false,
-      readIndex: 0,
+      readIndex: 5,
     };
   }
 
