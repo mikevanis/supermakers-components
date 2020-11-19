@@ -30,7 +30,7 @@ const readSteps = [
     svg: LightReadStep4Circuit,
   },
   {
-    text: "To turn the light off, we need to break the circuit and add a switch. It does not matter where the switch goes. The effect is the same.",
+    text: "To control the light, we need to break the circuit and add a switch. Make sure to add the switch on the negative side of the circuit.",
     svg: LightReadStep5Circuit,
   },
   {
@@ -56,7 +56,7 @@ class LightLevel extends React.Component {
     this.state = {
       mode: 'read',
       isReadModalVisible: false,
-      readIndex: 5,
+      readIndex: 0,
     };
   }
 

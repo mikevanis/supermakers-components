@@ -30,16 +30,16 @@ export default function LightReadStep5Circuit() {
                     <rect id="Rectangle_188" data-name="Rectangle 188" width="46.491" height="16.528" transform="translate(0 73.148)" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
                   </g>
                 </g>
-                <g id="Group_677" data-name="Group 677" transform="translate(246.855 287.056)">
+                <motion.g initial={{opacity: 0}} animate={{opacity: 1}} transition={{ease: "linear", duration: 0.5, yoyo: Infinity}} id="switch" data-name="Group 677" transform="translate(246.855 287.056)">
                   <circle id="Ellipse_72-2" data-name="Ellipse 72-2" cx="61.035" cy="61.035" r="61.035" transform="translate(0 0)" fill="#ffafa6" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
                   <path id="Rectangle_181-2" data-name="Rectangle 181-2" d="M1555.342,409.87H1590.7a38.969,38.969,0,0,1,38.969,38.97h0a38.97,38.97,0,0,1-38.969,38.968h-35.359a38.97,38.97,0,0,1-38.968-38.968h0A38.97,38.97,0,0,1,1555.342,409.87Z" transform="translate(-1487.053 -387.804)" fill="#ffafa6" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
                   <circle id="Ellipse_72-3" data-name="Ellipse 72-3" cx="38.969" cy="38.969" r="38.969" transform="translate(65.173 22.066)" fill="#ffafa6" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
                   <g id="ON" transform="translate(89.207 45.014)">
-                    <g id="ON-2" style="isolation: isolate">
-                      <text id="ON-2-2" data-name="ON" transform="translate(0 24)" fill="#182a74" font-size="25" font-family="Apercu-Regular, Apercu" letter-spacing="0.04em" style="isolation: isolate"><tspan x="0" y="0">ON</tspan></text>
+                    <g id="ON-2">
+                      <text id="ON-2-2" data-name="ON" transform="translate(0 24)" fill="#182a74" font-size="25" font-family="Apercu-Regular, Apercu" letter-spacing="0.04em"><tspan x="0" y="0">ON</tspan></text>
                     </g>
                   </g>
-                </g>
+                </motion.g>
                 <g id="Group_684-2" data-name="Group 684-2" transform="translate(0 181.344)">
                   <g id="Group_675-2" data-name="Group 675-2">
                     <path id="Rectangle_181" data-name="Rectangle 181" d="M1271.784,278.212h172.158a39.971,39.971,0,0,1,39.971,39.969v0h0a39.971,39.971,0,0,1-39.969,39.971h-172.16a39.97,39.97,0,0,1-39.971-39.967v0h0a39.969,39.969,0,0,1,39.967-39.972h0Z" transform="translate(-1231.813 -278.212)" fill="#ffafa6" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
@@ -64,7 +64,7 @@ export default function LightReadStep5Circuit() {
               </g>
             </g>
           </g>
-          <ellipse id="Ellipse_115" data-name="Ellipse 115" cx="4.337" cy="5.813" rx="4.337" ry="5.813" transform="translate(379.594 260.427)" fill="#182a74"/>
+          <motion.ellipse initial={{opacity: 0}} animate={{opacity: 1}} transition={{ease: "linear", duration: 0.5, yoyo: Infinity}} id="Ellipse_115" data-name="Ellipse 115" cx="4.337" cy="5.813" rx="4.337" ry="5.813" transform="translate(379.594 260.427)" fill="#182a74"/>
           <path id="Path_469" data-name="Path 469" d="M1449.378,448.706H1229.959a64.779,64.779,0,1,1,0-129.557" transform="translate(-1165.18 -98.074)" fill="none" stroke="#182a74" stroke-miterlimit="10" stroke-width="1"/>
           <g id="Group_1274" data-name="Group 1274" transform="translate(526.714 20.731)">
             <g id="Group_1259" data-name="Group 1259">
@@ -75,12 +75,12 @@ export default function LightReadStep5Circuit() {
             <ellipse id="Ellipse_115-2" data-name="Ellipse 115" cx="3.611" cy="4.84" rx="3.611" ry="4.84" transform="translate(18.936 24.082)" fill="#182a74"/>
             <ellipse id="Ellipse_115-3" data-name="Ellipse 115" cx="3.611" cy="4.84" rx="3.611" ry="4.84" transform="translate(2.03 24.082)" fill="#182a74"/>
           </g>
-          <g id="Group_1275" data-name="Group 1275" transform="translate(353.216 263.045)">
+          <motion.g initial={{opacity: 0}} animate={{opacity: 1}} transition={{ease: "linear", duration: 0.5, yoyo: Infinity}} id="Group_1275" data-name="Group 1275" transform="translate(353.216 263.045)">
             <path id="Path_470" data-name="Path 470" d="M1543.062,365.65c-5.324-2.674-10.649,0-10.649,0" transform="translate(-1529.218 -362.455)" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
             <line id="Line_208" data-name="Line 208" x1="3.195" y1="3.195" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
             <line id="Line_209" data-name="Line 209" x1="3.195" y2="3.195" transform="translate(0 3.195)" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
-          </g>
-          <line id="Line_210" data-name="Line 210" x1="3.847" transform="translate(352.565 266.24)" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+          </motion.g>
+          <motion.line initial={{opacity: 0}} animate={{opacity: 1}} transition={{ease: "linear", duration: 0.5, yoyo: Infinity}} id="Line_210" data-name="Line 210" x1="3.847" transform="translate(352.565 266.24)" fill="none" stroke="#182a74" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
           <g id="Group_1276" data-name="Group 1276" transform="translate(271.181 340.205)">
             <g id="Group_682" data-name="Group 682">
               <g id="Group_653" data-name="Group 653">
